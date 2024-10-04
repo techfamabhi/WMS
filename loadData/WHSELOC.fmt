@@ -1,0 +1,3 @@
+Table:WHSELOC
+Datafile:WHSELOC.dat
+Fields:whs_company;smallint,whs_location;string,whs_shadow;int,whs_code;string,whs_qty;int,whs_uom;string

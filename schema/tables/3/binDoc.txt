@@ -1,0 +1,28 @@
+Config settings for each of the Whse Locations following fields
+ pos 1 = wb_zone
+ pos 2 = wb_aisle
+ pos 3 = wb_section
+ pos 4 = wb_level
+ pos 5 = wb_subin
+
+each pos is A = alpha
+            a = alpha add dash after
+            N = numeric
+            n = numeric  add dash after
+            T = numeric zero pad to 2 digits
+            t = numeric zero pad to 2 digits add dash after
+            Z = numeric zero pad to 3 digits
+            z = numeric zero pad to 3 digits add dash after
+            blank = not used
+
+example value = zone A, aisle 5, section 4, shelf C, subin blank
+
+example setting : "ANNA " = "A54C"
+example setting : "ATTA " = "A0504C"
+example setting : "attA " = "A-05-04-C"
+example setting : "atZA " = "A-05-004C"
+example setting : "azTA " = "A-005-04C"
+example setting : "azzA " = "A-005-004-C"
+example setting : "AzTA " = "A005-04C"
+example setting : "AzZA " = "A005-004C"
+

@@ -1,0 +1,92 @@
+  <div class="container" id="crudApp">
+   <br />
+   <h3 class="FormHeaderFont" align="center">{title}</h3>
+<!-- NOCODE -->    <div class="col-md-6" v-if="saveSuccess">
+    <div class="messg">{{ updMessg }} </div>
+</div>
+   <br />
+   <div class="panel panel-default">
+    <div class="panel-heading">
+     <div class="row">
+      <div class="col-md-6">
+<!-- /NOCODE -->       <h3 class="panel-title">{panelTitle}</h3> <!-- NOCODE -->
+      </div>
+      <div class="col-md-6" align="right">
+       <button class="btnlink" @click="openModel" value="Add"><img border="0" src="images/add1.png" title="Add New Record"></button>
+      </div>
+     </div>
+    </div>
+    <div class="panel-body">
+     <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+       <tr>
+        <th class="FieldCaptionTD">Warehouse#</th>
+        <th class="FieldCaptionTD">Printer</th>
+        <th class="FieldCaptionTD">Description</th>
+        <th class="FieldCaptionTD">Printer Pathname</th>
+        <th class="FieldCaptionTD">Printer Type</th>
+        <th class="FieldCaptionTD">Action</th>
+       </tr>
+       <tr v-for="row in allData">
+        <td align="right">{{ row.lpt_company }}</td>
+        <td>{{ row.lpt_number }}</td>
+        <td>{{ row.lpt_description }}</td>
+        <td>{{ row.lpt_pathname }}</td>
+        <td>{{ row.lpt_type }}</td>
+        <td><button class="btnlink" name="edit" @click="fetchData(row.lpt_company,row.lpt_number)"><img src="images/edit2.png" border="0" title="Edit this Record"></button>
+        <button class="btnlink" name="delete" @click="deleteData(row.lpt_company,row.lpt_number)"><img src="images/trash2.png" border="0" title="Delete this Record"></button></td>
+       </tr>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div v-if="ModelAU">
+    <transition name="model">
+     <div class="modal-mask">
+      <div class="modal-wrapper">
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" @click="ModelAU=false"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title FormSubHeaderFont">{{ dynamicTitle }}</h4>
+         </div>
+         <div class="modal-body">
+<! -- Company Select -->
+           <div class="form-group">
+           <input type="hidden" v-model="CompId" />
+           <label title="Company/Store/Warehouse Number">Warehouse </label><span class="required">&nbsp;*</span>
+           <select class="form-control" @change="changeSelectedComp($event)" :disabled="enableSelect == 0">
+            <option value="CompId">Please Select Warehouse</option>
+            <option v-for="Comp in Comps" :key="Comp.opt_val" :value="Comp.opt_val" :selected="Comp.opt_val === CompId"> {{ Comp.opt_desc }}</option>
+          </select>
+<! -- in Company Select -->
+          </div>
+          <div class="form-group">
+           <label title="">Printer</label><span class="required">&nbsp;*</span>
+           <input type="text" title="The Printer" class="form-control" v-model="lpt_number"/>
+          </div>
+          <div class="form-group">
+           <label title="Description of Printer">Description</label>
+           <input type="text" title="Description of Printer" class="form-control" v-model="lpt_description" />
+          <div>
+          <div class="form-group">
+           <label title="Path of Printer">Pathname</label>
+           <input type="text" title="Path of Printer" class="form-control" v-model="lpt_pathname" />
+          <div>
+          <div class="form-group">
+           <label title="Type of Printer">Printer Type</label>
+           <input type="text" title="Type of Printer" class="form-control" v-model="lpt_type" />
+          <div>
+
+          <div align="center">
+           <input type="button" class="btn btn-success btn-xs" v-model="actionButton" @click="submitData" />
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </transition>
+   </div> <!-- /NOCODE -->
+  </div>
+

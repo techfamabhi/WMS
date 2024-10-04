@@ -1,0 +1,115 @@
+<!-- IF 1 == 2 -->
+<!-- scan or enter part 
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "onChange"=>"do_bin();",
+                          "fieldType"=>"text",
+                          "fieldValue"=>"",
+                          "fieldPrompt"=>"Part Number",
+                          "fieldPlaceHolder"=>"Scan or enter Part",
+                          "fieldName"=>"scaninput",
+                          "fieldId"=>" id=\"partnum\"",
+                          "fieldTitle"=>" title=\"Scan or Enter Part Number\"",
+                          "msg"=>""
+  ); -- !>
+<!-- END -->
+ <form name="{formName}" action="{formAction}" method="get">
+{hiddens}
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-half">
+     <div class="container {color} w3-padding-8">
+     <div class="w3-white">
+      <div class="w3-padding-8 FormHeaderFont">{msg}
+</div>
+        <span class="{color}"><br></span>
+        <div class="clear"></div>
+      <div class="row">
+       <div class="col-75">
+        <table style="position:relative;left: 6px;" class="table table-bordered table-striped">
+         <tr>
+          <td colspan="5" class="FormSubHeaderFont w3-white">Choose Function</td>
+         </tr>
+         </tr>
+         <tr>
+          <td colspan="5" class="w3-white">
+<!-- IF {curcounts|count} > 0 -->
+           <div title="Join an Existing Physical Count">
+            <span class="FormSubHeaderFont w3-white"> Join Existing Inventory Count</span>
+           <div class="content">
+            <table class="table table-bordered table-striped">
+             <tr>
+              <td class="FieldCaptionTD">Select</td>
+              <td class="FieldCaptionTD">Description</td>
+             </tr>
+	<!-- BEGIN {curcounts} -->
+          <tr>
+           <td>
+            <input type="radio" style="height:35px; width:35px; vertical-align: middle;" value="{count_num}" name="R1"> 
+</td>
+           <td class="FormSubHeaderFont w3-white" style="vertical-align: middle;">Task# {count_num} - Due: {due_date}  Started: {create_date}</td>
+          </tr>
+	<!-- END {curcounts} -->
+          </table>
+         </div>
+<!-- END -->
+<!-- IF {curcounts|count} < 1 -->
+            <span class="FormSubHeaderFont w3-white"> There are No Existing Inventory Counts to Join</span></br>
+<!-- END -->
+           </div>
+           <div class="FormSubHeaderFont w3-white" title="Create a new Count by Part Number">
+            <input type="radio" style="height:35px; width:35px; vertical-align: middle;" value="-2" name="R1"> New Count by Part<br>
+           </div>
+           <div class="FormSubHeaderFont w3-white" title="Create a new Count by Bin">
+            <input type="radio" checked style="height:35px; width:35px; vertical-align: middle;" value="-3" name="R1"> New Count by Bin<br>
+           </div>
+
+<!-- IF 1 == 2 -->
+<!-- END -->
+          </td>
+         </tr>
+         <tr>
+          <td colspan="5" class="w3-white">&nbsp;</td>
+         </tr>
+<!-- IF {buttons|count} > 0 -->
+         <tr>
+          <td colspan="5">
+<!-- BEGIN {buttons} -->
+           <button class="binbutton-small" id="{btn_id}" name="{btn_name}" value="{btn_value}" onclick="{btn_onclick}">{btn_prompt}</button>
+<!-- END {buttons} -->
+          </td>
+         </tr>
+<!-- END -->
+        </table>
+       </div>
+      </div>
+    <br>
+<!-- IF {msg2} <> "" -->
+     <div class="col-75" style="word-wrap: normal;font-weight: bold; font-size: large; text-align: cput;">{msg2}
+    </div>
+<!-- END -->
+     </div>
+     </div>
+    </div>
+  </div>
+ </form>
+<script>
+function do_done()
+{
+ document.{formName}.func.value="donePressed";
+ document.{formName}.submit();
+}
+function do_submit()
+{
+alert(document.{formName}.action);
+ document.{formName}.submit();
+}
+function do_cancel()
+{
+ document.form1.func.value="cancel";
+ document.form1.submit();
+}
+</script>
+
+

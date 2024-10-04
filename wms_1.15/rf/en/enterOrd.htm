@@ -1,0 +1,40 @@
+<!-- en/enterOrd.htm dse ver 1.0 03/25/22 -->
+<!-- IF 1 == 2 -->
+<!-- scan or enter Order#
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "fieldValue"=>"",
+                          "msg"=>""
+  ); -- !>
+<!-- END -->
+<div class="container {color}">
+ <form name="{formName}" action="{formAction}" method="get">
+  <input type="hidden" name="func" id="func" value="enterOrd">
+{hiddens}
+  <div class="row">
+   <div class="col-75">
+       <span style="font-weight: bold; font-size: large; text-align: center;">{msg}</span>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-10">
+    <label class="wmslabel">Order ID</label>
+   </div>
+   <div class="col-75">
+    <input name="scaninput" type="text" class="w3-white" onchange="do_submit();" value="{fieldValue}" placeholder="Scan or enter Order ID" id="orderNum" title="Scan or Enter Order Number">
+    <br>
+    <br>
+   </div>
+  </div>
+ </form>
+</div>
+
+<script>
+ document.{formName}.scaninput.focus();
+ function do_submit()
+  {
+   document.form1.submit();
+  }    
+</script>

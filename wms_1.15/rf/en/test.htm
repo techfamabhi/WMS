@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="/jq/bootstrap.min.css" rel="stylesheet">
+<link href="/nwms/Themes/Multipads/Style.css?=time()" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="/nwms/assets/css/wms.css">
+<link rel="stylesheet" href="../assets/css/responsiveTable.css">
+</head>
+<body>
+<div class="w3-half">
+<table class="rspTable table table-bordered table-striped">
+         <thead role="rowgroup">
+<!-- IF {heading} !== "" -->
+     <tr>
+      <td colspan="{cols}" class="FormSubHeaderFont" align="center">{heading}</td>
+     </tr>
+<!-- END -->
+
+<!-- IF {flds|count} > 0 -->
+          <tr role="row">
+<!-- BEGIN {flds} AS fld -->
+           <td role"columnheader" class="FieldCaptionTD" align="center" >{fld.prompt}</td>
+<!-- END {flds} -->
+        </tr>
+       </thead>
+<!-- END -->
+<!-- IF {items|count} > 0 -->
+<!-- BEGIN {items} AS item -->
+<!-- IF {item.newTr} == 1 -->
+         <tr>
+<!-- END -->
+          <td  data-label="{item.prompt}" align="center">{item.value}</td>
+<!-- IF {item.newTr} == 2 -->
+         </tr>
+<!-- END -->
+<!-- END {items} -->
+<!-- END -->
+</table>
+</div>
+
+

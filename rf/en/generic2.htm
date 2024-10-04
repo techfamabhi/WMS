@@ -1,0 +1,77 @@
+<!-- IF 1 == 2 -->
+<!-- scan or enter part 
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "onChange"=>"do_bin();",
+                          "fieldType"=>"text",
+                          "fieldValue"=>"",
+                          "fieldPrompt"=>"Part Number",
+                          "fieldPlaceHolder"=>"Scan or enter Part",
+                          "fieldName"=>"scaninput",
+                          "fieldId"=>" id=\"partnum\"",
+                          "fieldTitle"=>" title=\"Scan or Enter Part Number\"",
+                          "msg"=>""
+  ); -- !>
+<!-- END -->
+ <form name="{formName}" action="{formAction}" method="get">
+{hiddens}
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-half">
+     <div class="container {color} w3-padding-8">
+     <div class="w3-white">
+      <div class="w3-padding-8 FormHeaderFont">{msg}
+</div>
+        <span class="{color}"><br></span>
+        <div class="clear"></div>
+      <div class="row">
+       <div class="col-75">
+        <table style="position:relative;left: 6px;" class="table table-bordered table-striped">
+         <tr>
+          <td colspan="5" class="w3-white">&nbsp;</td>
+         </tr>
+         <tr>
+          <td class="FieldCaptionTD" align="left" width="10%">{fieldPrompt}</td>
+          <td class="w3-white" colspan="4" align="left" width="10%">
+           <input name="{fieldName}" type="{fieldType}" class="w3-white" onchange="{onChange}" value="{fieldValue}" placeholder="{fieldPlaceHolder}"{fieldId}{fieldTitle}>
+          </td>
+         </tr>
+         <tr>
+          <td colspan="5" class="w3-white">&nbsp;</td>
+         </tr>
+<!-- IF {buttons|count} > 0 -->
+         <tr>
+          <td colspan="5">
+<!-- BEGIN {buttons} -->
+           <button class="binbutton-small" id="{btn_id}" name="{btn_name}" value="{btn_value}" onclick="{btn_onclick}">{btn_prompt}</button>
+<!-- END {buttons} -->
+          </td>
+         </tr>
+<!-- END -->
+        </table>
+       </div>
+      </div>
+    <br>
+<!-- IF {msg2} <> "" -->
+     <div class="col-75" style="word-wrap: normal;font-weight: bold; font-size: large; text-align: cput;">{msg2}
+    </div>
+<!-- END -->
+     </div>
+     </div>
+    </div>
+  </div>
+ </form>
+<script>
+ document.{formName}.{fieldName}.focus();
+function do_done()
+{
+ document.form1.func.value="donePressed";
+ document.form1.submit();
+}
+function do_cancel()
+{
+ document.form1.func.value="cancel";
+ document.form1.submit();
+}
+</script>

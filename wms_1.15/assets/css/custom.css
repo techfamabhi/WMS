@@ -1,0 +1,42 @@
+/* Write your custom CSS here */
+.div-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+.warh-bloc {
+	height:150px;
+	margin:2px;
+}
+.dashed-primary {
+	height:150px;
+	margin: 2px;
+	border-style: dashed 1px;
+	border-color: #0d47a1;
+	font-size: 
+}
+.dashed-warning {
+	height:150px;
+	margin: 2px;
+	border-style: dashed 1px;
+	border-color: #FF8800;
+}
+.dashed-danger {
+	height:150px;
+	margin: 2px;
+	border-style: dashed 1px;
+	border-color: #CC0000;
+}
+.dashed-success {
+	height:150px;
+	margin: 2px;
+	border-style: dashed 1px;
+	border-color: #007E33;
+}
+.title-warh-bloc {
+	font-size: 24px;
+	color: #FFF;
+}
+.icon-warh-bloc {
+	font-size: 38px;
+	color: #FFF;
+}

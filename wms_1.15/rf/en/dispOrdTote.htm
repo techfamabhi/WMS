@@ -1,0 +1,65 @@
+<!-- en/dispOrdTote.htm dse ver 1.0 03/25/22 -->
+<!-- IF 1 == 2 -->
+<!-- Display Contents of Tote for Packing 
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "hostordernum"=>"",
+                          "order_num"=>"",
+                          "customer_id"=>"",
+                          "cust_po_num"=>"",
+                          "date_req"=>"m/d/Y h:i",
+                          "ship_via"=>"",
+                          "ship_complete"=>"",
+                          "priority"=>"",
+                          "zones"=>"",
+                          "totes"=>array(),
+                          "msg"=>""
+  ); -- !>
+<!-- END -->
+
+<div class="col-md-8">
+   <div class="panel-body">
+    <div class="table-responsive">
+     <form name="form1" action="{thisprogram}" method="get">
+{hiddens}      <input type="hidden" name="func" value="letsPick">
+      <input type="hidden" name="nh" value="{nh}">
+      <input type="hidden" name="orderFound" value="{order_num}">
+      <input type="hidden" name="hostordernum" value="{hostordernum}">
+      <table class="table table-bordered table-striped">
+       <tr>
+        <th class="FieldCaptionTD">Order #</th>
+        <th class="FieldCaptionTD">Customer</th>
+        <th class="FieldCaptionTD" colspan="3">Name</th>
+       </tr>
+       <tr>
+        <td>{hostordernum}</td>
+        <td>{customer_id}</td>
+        <td colspan="3">{name}</td>
+       </tr>
+       <tr>
+        <th class="FieldCaptionTD">Priority</th>
+        <th class="FieldCaptionTD">Ship Via</th>
+        <th class="FieldCaptionTD">Zones</th>
+        <th class="FieldCaptionTD">Num Lines</th>
+        <th class="FieldCaptionTD">Required</th>
+       </tr>
+       <tr>
+        <td>{priority}</td>
+        <td>{ship_via}</td>
+        <td>{zones}</td>
+        <td align="right">{num_lines}</td>
+        <td>{orderDate}</td>
+       </tr>
+       <tr>
+        <td colspan="5">
+         <button class="binbutton" id="B1" name="B1" onclick="document.form1.submit();">{B1Prompt}</button>
+         <button class="binbutton" id="B2" name="B2" onclick="do_reset('sOrder');">Cancel</button>
+       </tr>
+      </table>
+     </form>
+    </div>
+   </div>
+  </div>
+

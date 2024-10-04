@@ -1,0 +1,128 @@
+<!-- en/dispTotes.htm dse ver 1.0 03/25/22 -->
+<!-- IF 1 == 2 -->
+<!-- Display Contents of Tote for Packing 
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "hostordernum"=>"",
+                          "order_num"=>"",
+                          "customer_id"=>"",
+                          "cust_po_num"=>"",
+                          "date_req"=>"m/d/Y h:i",
+                          "ship_via"=>"",
+                          "ship_complete"=>"",
+                          "priority"=>"",
+                          "zones"=>"",
+                          "otherTotes"=>"",
+                          "items"=>array(),
+                          "msg"=>""
+  ); -- !>
+<!-- END -->
+
+<div class="col-md-8">
+   <div class="panel-body">
+    <div class="table-responsive">
+     <form name="form1" action="{thisprogram}" method="get">
+{hiddens}      <input type="hidden" name="func" value="letsPick">
+      <input type="hidden" name="nh" value="{nh}">
+      <input type="hidden" name="orderFound" value="{order_num}">
+      <input type="hidden" name="hostordernum" value="{hostordernum}">
+<!-- IF {msg} <> "" -->
+<div  style="margin-left:0px;" class="w3-container wms-red"><span style="font-weight: bold; font-size: large; text-align: center;">{msg}</span></div>
+<!-- END -->
+      <table class="table table-bordered table-striped">
+       <tr>
+        <th class="FieldCaptionTD">Order #</th>
+        <th class="FieldCaptionTD">Customer</th>
+        <th class="FieldCaptionTD">PO#</th>
+        <th class="FieldCaptionTD" colspan="1">Req</th>
+       </tr>
+       <tr>
+        <td>{hostordernum}</td>
+        <td>{customer_id}</td>
+        <td>{cust_po_num}</td>
+        <td colspan="1">{date_req}</td>
+       </tr>
+       <tr>
+        <th class="FieldCaptionTD">Priority</th>
+        <th class="FieldCaptionTD">Ship Via</th>
+        <th class="FieldCaptionTD">Zones</th>
+        <th class="FieldCaptionTD">Ship Compl</th>
+       </tr>
+       <tr>
+        <td>{priority}</td>
+        <td>{ship_via}</td>
+        <td>{zones}</td>
+        <td>{ship_complete}</td>
+       </tr>
+<!-- IF {totes|count} > 0 -->
+       <tr>
+        <td colspan="4">
+         <table class="table-bordered table-striped">
+          <tr>
+           <td colspan="3" class="FormSubHeaderFont">Totes</td>
+          </tr>
+          <tr>
+           <th class="FieldCaptionTD">Tote Id</th>
+           <th class="FieldCaptionTD">Zone</th>
+           <th class="FieldCaptionTD">Loc</th>
+          <tr>
+<!-- BEGIN {totes} -->
+          <tr>
+           <td>{tote_id}</td>
+           <td align="center">{last_zone}</td>
+           <td>{last_loc}</td>
+          </tr>
+<!-- END {totes} -->
+<!-- IF {unPicked|count} > 0 -->
+<!-- BEGIN {unPicked} -->
+          <tr class="wms-red">
+           <td>Items: {numRows}</td>
+           <td align="center">{zone}</td>
+           <td>unPicked</td>
+          </tr>
+<!-- END {unPicked} -->
+<!-- END -->
+         </table>
+        </td>
+       </tr>
+<!-- END -->
+<!-- IF {lines|count} > 0 -->
+       <tr>
+        <td colspan="4">
+         <table class="table-bordered table-striped">
+          <tr>
+           <td colspan="3" class="FormSubHeaderFont">Contents</td>
+          </tr>
+          <tr>
+           <th class="FieldCaptionTD">Tote</th>
+           <th class="FieldCaptionTD">Part Number</th>
+           <th class="FieldCaptionTD">Qty</th>
+           <th class="FieldCaptionTD">UOM</th>
+          </tr>
+<!-- BEGIN {lines} -->
+          <tr>
+           <td>{tote_id}</td>
+           <td align="center">{p_l} {part_number}</td>
+           <td>{tote_qty}</td>
+           <td>{tote_uom}</td>
+          </tr>
+<!-- END {lines} -->
+         </table>
+        </td>
+       </tr>
+<!-- END -->
+       <tr>
+        <td colspan="5">
+<!-- IF {B1Prompt} <> "" -->
+         <button class="binbutton" id="B1" name="B1" onclick="document.form1.submit();">{B1Prompt}</button>
+<!-- END -->
+         <button class="binbutton" id="B2" name="B2" onclick="do_reset('sOrder');">Cancel</button>
+       </tr>
+      </table>
+     </form>
+    </div>
+   </div>
+  </div>
+

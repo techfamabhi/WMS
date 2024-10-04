@@ -1,0 +1,11 @@
+To correct barcode encoding being passed on Datalogic scanners.
+
+Prevelent on QR codes;
+
+    Open: Datalogic icon
+    Scroll to and select Formatting
+    Select Standard Formatting
+    Scroll to and select ECI policy
+    Select Remove
+
+

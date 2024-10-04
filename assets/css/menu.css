@@ -1,0 +1,163 @@
+/* menu support */
+.dropbtn {
+    background-color : transparent;
+    color: #4d4d4d;
+    padding: 2px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    right: 0px;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #00a3cf;
+}
+dropd {
+  position: relative;
+ }
+ .menu-one {
+  border: none;
+  width: 25%; 
+  float: left;
+ }
+ .menu-two {
+  border: none;
+  width:  70%;
+  float: auto;
+  margin-left: 35%;
+ }
+ .menu-three {
+  border: none;
+  width: auto;
+  float: right;
+ }
+  .hidden-mobile {
+    border: none;
+    width: auto;
+  }
+ @media (max-width: 637px) {
+  .hidden-mobile {
+   display:none;
+  }
+ }
+ @media (max-width: 319px) {
+  .hidden-mobile1 {
+  display: none;
+  }
+ }
+.menu-quarter{float:left;width:100%}
+@media (min-width:601px)
+{
+ .menu-quarter{width:25%}
+}
+ @media (max-width: 780px) {
+  .wrap {
+    flex-direction: column-reverse;
+  }
+  .menu-one {
+    width: auto;
+    left: 50%;
+   }
+  .menu-two {
+    width: auto;
+    padding-top: 30px;
+    margin-left: 2px;
+  }
+}
+/* end menu support */
+
+/* Colors */
+.menu-amber,.menu-hover-amber:hover{color:#000!important;background-color:#ffc107!important}
+.menu-aqua,.menu-hover-aqua:hover{color:#000!important;background-color:#00ffff!important}
+.menu-blue,.menu-hover-blue:hover{color:#fff!important;background-color:#66a3ff!important}
+.menu-light-blue,.menu-hover-light-blue:hover{color:#000!important;background-color:#87CEEB!important}
+.menu-brown,.menu-hover-brown:hover{color:#fff!important;background-color:#795548!important}
+.menu-cyan,.menu-hover-cyan:hover{color:#000!important;background-color:#00bcd4!important}
+.menu-blue-grey,.menu-hover-blue-grey:hover,.menu-blue-gray,.menu-hover-blue-gray:hover{color:#fff!important;background-color:#607d8b!important}
+.menu-green,.menu-hover-green:hover{color:#fff!important;background-color:#47d147!important}
+.menu-light-green,.menu-hover-light-green:hover{color:#000!important;background-color:#8bc34a!important}
+.menu-indigo,.menu-hover-indigo:hover{color:#fff!important;background-color:#3f51b5!important}
+.menu-khaki,.menu-hover-khaki:hover{color:#000!important;background-color:#f0e68c!important}
+.menu-lime,.menu-hover-lime:hover{color:#000!important;background-color:#cddc39!important}
+.menu-orange,.menu-hover-orange:hover{color:#000!important;background-color:#ff9800!important}
+.menu-deep-orange,.menu-hover-deep-orange:hover{color:#fff!important;background-color:#ff5722!important}
+.menu-pink,.menu-hover-pink:hover{color:#fff!important;background-color:#e91e63!important}
+.menu-purple,.menu-hover-purple:hover{color:#fff!important;background-color:#9c27b0!important}
+.menu-deep-purple,.menu-hover-deep-purple:hover{color:#fff!important;background-color:#673ab7!important}
+.menu-red,.menu-hover-red:hover{color:#fff!important;background-color:#ffaaaa!important}
+.menu-read,.menu-hover-read:hover{color:#fff!important;background-color:#ffaaaa!important}
+.menu-orange,.menu-hover-orange:hover{color:#000!important;background-color:#ff9800!important}
+.menu-sand,.menu-hover-sand:hover{color:#000!important;background-color:#fdf5e6!important}
+.menu-teal,.menu-hover-teal:hover{color:#fff!important;background-color:#009688!important}
+.menu-yellow,.menu-hover-yellow:hover{color:#000!important;background-color:#ffffb3!important}
+.menu-white,.menu-hover-white:hover{color:#000!important;background-color:#fff!important}
+.menu-black,.menu-hover-black:hover{color:#fff!important;background-color:#000!important}
+.menu-bluejay,.menu-hover-black:hover{color:#fff!important;background-image:url("/Bluejay/hdr_bd.jpg")!important}
+.menu-grey,.menu-hover-grey:hover,.menu-gray,.menu-hover-gray:hover{color:#000!important;background-color:#bbb!important}
+.menu-light-grey,.menu-hover-light-grey:hover,.menu-light-gray,.menu-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}
+.menu-dark-grey,.menu-hover-dark-grey:hover,.menu-dark-gray,.menu-hover-dark-gray:hover{color:#fff!important;background-color:#616161!important}
+.menu-pale-red,.menu-hover-pale-red:hover{color:#000!important;background-color:#ffdddd!important}
+.menu-pale-green,.menu-hover-pale-green:hover{color:#000!important;background-color:#ddffdd!important}
+.menu-pale-yellow,.menu-hover-pale-yellow:hover{color:#000!important;background-color:#ffffcc!important}
+.menu-pale-blue,.menu-hover-pale-blue:hover{color:#000!important;background-color:#ddffff!important}
+.menu-text-red,.menu-hover-text-red:hover{color:#f44336!important}
+.menu-text-green,.menu-hover-text-green:hover{color:#4CAF50!important}
+.menu-text-blue,.menu-hover-text-blue:hover{color:#2196F3!important}
+.menu-text-yellow,.menu-hover-text-yellow:hover{color:#ffeb3b!important}
+.menu-text-white,.menu-hover-text-white:hover{color:#fff!important}
+.menu-text-black,.menu-hover-text-black:hover{color:#000!important}
+.menu-text-grey,.menu-hover-text-grey:hover,.menu-text-gray,.menu-hover-text-gray:hover{color:#757575!important}
+.menu-text-amber{color:#ffc107!important}
+.menu-text-aqua{color:#00ffff!important}
+.menu-text-light-blue{color:#87CEEB!important}
+.menu-text-brown{color:#795548!important}
+.menu-text-cyan{color:#00bcd4!important}
+.menu-text-blue-grey,.menu-text-blue-gray{color:#607d8b!important}
+.menu-text-light-green{color:#8bc34a!important}
+.menu-text-indigo{color:#3f51b5!important}
+.menu-text-khaki{color:#b4aa50!important}
+.menu-text-lime{color:#cddc39!important}
+.menu-text-orange{color:#ff9800!important}
+.menu-text-deep-orange{color:#ff5722!important}
+.menu-text-pink{color:#e91e63!important}
+.menu-text-purple{color:#9c27b0!important}
+.menu-text-deep-purple{color:#673ab7!important}
+.menu-text-sand{color:#fdf5e6!important}
+.menu-text-teal{color:#009688!important}
+.menu-text-light-grey,.menu-hover-text-light-grey:hover,.menu-text-light-gray,.menu-hover-text-light-gray:hover{color:#f1f1f1!important}
+.menu-text-dark-grey,.menu-hover-text-dark-grey:hover,.menu-text-dark-gray,.menu-hover-text-dark-gray:hover{color:#3a3a3a!important}
+.menu-border-red,.menu-hover-border-red:hover{border-color:#f44336!important}
+.menu-border-green,.menu-hover-border-green:hover{border-color:#4CAF50!important}
+.menu-border-blue,.menu-hover-border-blue:hover{border-color:#2196F3!important}
+.menu-border-yellow,.menu-hover-border-yellow:hover{border-color:#ffeb3b!important}
+.menu-border-white,.menu-hover-border-white:hover{border-color:#fff!important}
+.menu-border-black,.menu-hover-border-black:hover{border-color:#000!important}
+.menu-border-grey,.menu-hover-border-grey:hover,.menu-border-gray,.menu-hover-border-gray:hover{border-color:#bbb!important}
+

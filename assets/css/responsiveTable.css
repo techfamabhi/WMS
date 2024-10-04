@@ -1,0 +1,82 @@
+/*
+Responsive Data-Tables css 
+
+Reformat the table so it fits nicely on small screens
+
+Dave Erlenbach edavenbach@gmail.com
+
+I found this at 
+https://css-tricks.com/responsive-data-tables/
+by: Chris Coyier
+
+I incorpaorated the changes from the comments section mentioned by 
+Idea from @chriseppstein: (the data-label stuff)
+
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 601px
+and also iPads specifically.
+
+----------Original lines ------------------- (I changed it to 601 px)
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+--------------------------------------------
+*/
+.rspTable thead tr {
+                text-align: center;
+                 }
+@media
+only screen and (max-width: 601px),
+{
+
+        /* Force table to not be like tables anymore */
+        .rspTable table, thead, tbody, th, td, tr {
+                display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        .rspTable thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+                text-align: center;
+        }
+
+        .rspTable tr { border: 1px solid #ccc; }
+
+        .rspTable td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 55%;
+        }
+
+        .rspTable td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 35%;
+                padding-right: 10px;
+                white-space: nowrap;
+        }
+
+        /*
+        Label the data
+        */
+        .rspTable td:before { 
+                content: attr(data-label); 
+                text-align:left;
+                border-style: outset; 
+		border-width: 1px;
+		background-color: #a0acc5; 
+		color: #000000; 
+		font-size: 13px; 
+		font-weight: bold;
+                top-margin: 0px;
+                bottom-margin: 0px;
+                overflow:auto
+                  }
+}
+

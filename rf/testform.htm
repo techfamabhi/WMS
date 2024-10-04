@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Order 123456</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta name="viewport" content="initial-scale=1.10, width=device-width, user-scalable=yes" />
+ <link rel="stylesheet" href="../assets/css/wdi3.css">
+ <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+ <link rel="stylesheet" href="../Themes/Multipads/Style.css">
+ <style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  font-size: large;
+  font-weight: bold;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.imAt {
+  float: right;
+  border: none;
+}
+.Bin {
+  float: left;
+  border: none;
+}
+.Middle {
+  border: none;
+  display:table;
+  margin:0 auto;
+}
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.infoSpan {
+ border:2px;
+ border-style: solid;
+ border-color:red;
+ padding: 10px;
+ border-radius: 5px;
+}
+.col-10 {
+  float: left;
+  width: 15%;
+  margin-top: 6px;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.col-25 {
+  float: left;
+  width: 24%;
+  margin-top: 6px;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.col-75 {
+  float: left;
+  width: 74%;
+  margin-top: 6px;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.col-100 {
+  float: left;
+  width: 99%;
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-10, .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+ 
+
+<script>
+function do_reset(arg)
+{
+ document.form1.func.value=arg;
+ document.form1.submit();
+}
+
+</script>
+<style>
+.myRed
+{
+color:#fff!important;
+background-color:#ff7777!important
+}
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.binbutton {
+    background-color: #2196F3;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.binbutton:disabled {
+    background-color: #dddddd;
+}
+.binbutton:enabled {
+    background-color: blue;
+}
+</style>
+<script>
+function do_submit()
+{
+ document.form1.submit();
+}
+</script>
+
+</head>
+
+ <body>
+<!-- !PAGE CONTENT! -->
+
+  
+<div class="container w3-blue">
+ <form name="form1" action="pickOrder.php" method="get">
+  <input type="hidden" name="func" id="func" value="pickScanPart">
+  <input type="hidden" name="nh" value="1">
+  <input type="hidden" name="hostordernum" id="hostordernum" value="123456">
+  <input type="hidden" name="bintoScan" id="bintoScan" value="A-02-03-C">
+  <input type="hidden" name="orderNumber" id="orderNumber" value="2">
+  <input type="hidden" name="lineNumber" id="lineNumber" value="1">
+  <input type="hidden" name="pullnum" id="pullnum" value="1">
+  <input type="hidden" name="shadow" id="shadow" value="87630">
+  <input type="hidden" name="p_l" id="p_l" value="WIX">
+  <input type="hidden" name="part_number" id="part_number" value="24006">
+  <input type="hidden" name="part_desc" id="part_desc" value="FuelFilter">
+  <input type="hidden" name="uom" id="uom" value="EA">
+  <input type="hidden" name="qtytopick" id="qtytopick" value="2">
+  <input type="hidden" name="qtypicked" id="qtypicked" value="0">
+   <div class="row">
+    <div class="col-75">
+     <span style="font-weight: bold; font-size: large; text-align: center;">I'm at A-02-03-C, Scan WIX 24006&nbsp;&nbsp;&nbsp; (qty 2 EA)</span>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-10">
+     <label for="partnumber">Scan Part</label>
+    </div>
+    <div class="col-75">
+       <input name="partnumber" type="text" onchange="do_submit();" value="" placeholder="Scan Part WIX 24006" id="part_number" title="I'm at A-02-03-C, Scan WIX 24006">
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-10">
+     <label for="qty">Qty</label>
+    </div>
+    <div class="col-75">
+     <input name="qty" type="number" onchange="" value="1" placeholder=""><span>&nbsp;EA</span>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-10">
+     &nbsp;
+    </div>
+    <div class="col-75">
+     <span class="infoSpan">Total Quantity is <strong>2</strong></span></label>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-75">
+     <input type="submit" value="Submit">
+    </div>
+   </div>
+  </form>
+</div>
+<div class="container">
+   <div class="row">
+    <div class="col-25">
+     <span class="Bin" style="font-size: large;">Bin:A-02-03-C</span>
+    </div>
+    <div class="col-25">
+     <div class="Middle">
+      <span style="font-size: large;">(qty 2 EA)</span>
+     </div>
+    </div>
+    <div class="col-25">
+     <span class="imAt" style="font-size: large;">I'm at A-02-03-C</span>
+    </div>
+   </div>
+</div>
+ <script>
+ document.form1.partnumber.focus();
+ if ( window !== window.parent ) 
+ {
+  parent.document.getElementById('pageTitle').innerHTML="Order 123456";
+ }
+</script>
+ </body>
+</html>
+

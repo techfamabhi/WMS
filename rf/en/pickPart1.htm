@@ -1,0 +1,215 @@
+ <style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], input[type=number], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  color: black;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  font-size: large;
+  font-weight: bold;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.imAt {
+  float: right;
+  border: none;
+}
+.Bin {
+  float: left;
+  border: none;
+}
+.Middle {
+  border: none;
+  display:table;
+  margin:0 auto;
+}
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.infoSpan {
+ border:2px;
+ border-style: solid;
+ border-color:red;
+ padding: 10px;
+ border-radius: 5px;
+ font-weight: bold;
+ font-size: large;
+}
+.infoSpan:empty { 
+    border: none;
+}
+.col-10 {
+  float: left;
+  width: 15%;
+  margin-top: 6px;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.col-25 {
+  float: left;
+  width: 24%;
+  margin-top: 6px;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.col-75 {
+  float: left;
+  width: 74%;
+  margin-top: 6px;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+.col-100 {
+  float: left;
+  width: 99%;
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-10, .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+ 
+
+<script>
+function do_submit()
+{
+ document.form1.submit();
+}
+</script>
+
+</head>
+
+ <body>
+<!-- !PAGE CONTENT! -->
+<div class="container {color}">
+ <form name="{formName}" action="{formAction}" method="get">
+{hiddens}
+   <div class="row">
+    <div class="col-75">
+     <span style="font-weight: bold; font-size: large; text-align: center;">{msg}</span>
+    </div>
+   </div>
+   <div class="row">
+    <div class="toteDiv">Tote {toteId}</div>
+    <div class="col-10">
+     <label for="{partField}">{partPrompt}</label>
+    </div>
+    <div class="col-75">
+       <input name="{partField}" type="text" onchange="{partOnChange}" value="{partValue}" placeholder="{partPlaceHolder}" id="{partId}" title="{partTitle}">
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-10">
+     <label for="{qtyField}">{qtyPrompt}</label>
+    </div>
+
+    <div class="col-10">
+    <input type="button" value="-" class="button-minus w3-red" onclick="plusMinus('Qty',0);" data-field="{qtyField}">
+    <input type="number" step="1" max="" style="width: 62px" value="1" id="Qty" name="{qtyField}" class="quantity-field">
+    <input type="button" value="+" class="button-plus w3-green" onclick="plusMinus('Qty',1);" data-field="{qtyField}">
+<span>&nbsp;{qtyuom}</span>
+   </div>
+
+   </div>
+   <div class="row">
+    <div class="col-10">
+     &nbsp;
+    </div>
+    <div class="col-75">
+     <span class="infoSpan">{msg2}</span>
+    </div>
+   </div>
+</div>
+<div class="container">
+ <div class="row">
+  <div class="col-25">
+   <span class="Bin" style="font-size: large;">{bottomLeft}</span>
+  </div>
+  <div class="col-25">
+   <div class="Middle">
+    <span style="font-size: large;">{bottomCenter}</span>
+   </div>
+  </div>
+  <div class="col-25">
+   <span class="imAt" style="font-size: large;">{bottomRight}</span>
+  </div>
+ </div>
+<!-- IF {origMsg} <> "" -->
+   <div class="row">
+    <div class="col-75">
+     <span style="font-weight: bold;font-size:large;text-align:center;">{origMsg}</span>
+    </div>
+   </div>
+<!-- END -->
+<button class="binbutton wms-blue" id="B1" name="B1" title="Not Found" value="" onclick="do_NF();">Not Found</button>
+<button title="No or unreadable UPC on Part" class="binbutton wms-blue" id="NoUPC" name="NoUPC" value="" onclick="setUPC();">No UPC</button>
+
+ </form>
+</div>
+ <script>
+<!-- IF {function} <> "" -->
+  {function}
+<!-- END -->
+  function setUPC()
+  {
+   var shd = document.getElementById('shadow').value;
+  document.getElementById('NoUPC').value=1;
+  document.{formName}.{partField}.value="." + shd;
+
+  }
+
+  function do_NF()
+ {
+  if (confirm("Are you sure you want to short pick this item?") == true)
+  {
+   document.form1.B1.value="NFP";
+   document.form1.submit();
+  }
+ else return false;
+ } // end do_NF
+
+  document.{formName}.{focusField}.focus();
+ </script>
+ </body>
+</html>
+

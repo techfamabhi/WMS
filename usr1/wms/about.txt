@@ -1,0 +1,2 @@
+Directory used for import and export of data from the WMS system
+

@@ -1,0 +1,85 @@
+  <div class="container" id="coptMaint">
+   <br />
+   <h3 class="FormHeaderFont" align="center">{title}</h3>
+<!-- NOCODE -->    <div class="col-md-6" v-if="saveSuccess">
+     <div class="messg">{{ updMessg }} </div>
+    </div>
+   <br />
+   <div class="panel panel-default">
+    <div class="panel-heading">
+     <div class="row">
+      <div class="col-md-6">
+<!-- /NOCODE -->       <h3 class="panel-title">{panelTitle}</h3><!-- NOCODE -->
+      </div>
+      <div class="col-md-6" align="right">
+       <button class="btnlink" @click="openModel" value="Add"><img border="0" src="images/add1.png" title="Add New Record"></button>
+      </div>
+     </div>
+    </div>
+    <div class="panel-body">
+     <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+       <tr>
+        <th class="FieldCaptionTD">Option Id</th>
+        <th class="FieldCaptionTD">Description</th>
+        <th class="FieldCaptionTD">Description 2</th>
+        <th class="FieldCaptionTD">Category</th>
+        <th class="FieldCaptionTD">Full Description</th>
+       </tr>
+       <tr v-for="row in allData">
+        <td align="right">{{ row.copt_number }}</td>
+        <td>{{ row.copt_desc }}</td>
+        <td>{{ row.copt_desc1 }}</td>
+        <td>{{ row.copt_cat }}</td>
+        <td>{{ row.copt_text }}</td>
+        <td><button class="btnlink" name="edit" @click="fetchData(row.copt_number)"><img src="images/edit2.png" border="0" title="Edit this Record"></button>
+       </tr>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div v-if="ModelAU">
+    <transition name="model">
+     <div class="modal-mask">
+      <div class="modal-wrapper">
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" @click="ModelAU=false"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title FormSubHeaderFont">{{ dynamicTitle }}</h4>
+         </div>
+         <div class="modal-body">
+<! -- Add dropdown for counterman, remove name, add percent and comments --!>
+          <div class="form-group">
+           <label title="Option Number">Option Id</label><span class="required">&nbsp;*</span>
+           <input type="text" title="Option Number" class="form-control" v-model="copt_number" />
+          </div>
+          <div class="form-group">
+           <label title="">Description</label><span class="required">&nbsp;*</span>
+           <input type="text" title="The Description of the Option" class="form-control" v-model="copt_desc"/>
+          </div>
+          <div class="form-group">
+           <label title="Address">Description 2</label>
+           <input type="text" title="Description 2" class="form-control" v-model="copt_desc1" />
+          <div>
+          <div class="form-group">
+           <label title="Category (separate by :)">Category</label>
+           <input type="text" title="Category (separate by :)" class="form-control" v-model="copt_cat" />
+          </div>
+          <div class="form-group">
+           <label title="Text of Description">Text of Description</label>
+           <input type="textrea" rows="8" cols="50" title="Text of Description" class="form-control" v-model="copt_text" />
+          </div>
+          <div class="form-group">
+          <br />
+          <div align="center">
+           <input type="button" class="btn btn-success btn-xs" v-model="actionButton" @click="submitData" />
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </transition>
+   </div> <!-- /NOCODE -->
+  </div>

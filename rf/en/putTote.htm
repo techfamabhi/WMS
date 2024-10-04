@@ -1,0 +1,52 @@
+<!-- en/putTote.htm dse ver 1.0 03/25/22 -->
+<!-- IF 1 == 2 -->
+<!-- scan Tote or Pallet# for put away
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "fieldValue"=>"",
+                          "msg"=>"",
+                          "msg2"=>""
+
+  ); -- !>
+<!-- END -->
+<div class="container {color}">
+ <form name="{formName}" action="{formAction}" method="get">
+  <input type="hidden" name="func" id="func" value="putTote">
+{hiddens}
+  <div class="row">
+   <div class="col-75">
+       <span style="word-wrap: normal; font-weight: bold; font-size: large; text-align: cput;">{msg}</span>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-10">
+    <label class="wmslabel">Enter Tote/Pallet</label>
+   </div>
+   <div class="col-75">
+    <input name="toteId" type="text" class="w3-white" onchange="do_submit();" value="{fieldValue}" placeholder="Scan Tote/Pallet ID to Move" id="toteid" title="Scan or Enter Tote/Pallet ID">
+    <br>
+    <br>
+   </div>
+  </div>
+<!-- IF {msg2} <> "" -->
+  <div class="row">
+   <div class="col-75" style="word-wrap: normal;font-weight: bold; font-size: large; text-align: cput;">{msg2}
+   </div>
+  </div>
+<!-- END -->
+  <div class="row">
+   <div class="col-75" style="word-wrap: normal;font-weight: bold; font-size: large; text-align: cput;">Scan Tote/Pallet (Tote/Pallet, Cart, etc) to Put Away
+   </div>
+  </div>
+ </form>
+</div>
+
+<script>
+ document.{formName}.toteId.focus();
+ function do_submit()
+  {
+   document.form1.submit();
+  }    
+</script>

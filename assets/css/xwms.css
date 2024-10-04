@@ -1,0 +1,223 @@
+.menuI {
+position: absolute;
+right: 0;
+}
+
+.myRed {
+color: #fff !important;
+background-color: #ff7777 !important
+}
+
+.binbutton {
+background-color: #2196F3;
+border: none;
+border-radius: 8px;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+.binbutton:disabled {
+background-color: #dddddd;
+}
+
+.binbutton:enabled {
+background-color: blue;
+}
+
+* {
+box-sizing: border-box;
+}
+
+input[type=text], input[type=number], select, textarea {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 4px;
+resize: vertical;
+color: black;
+}
+
+label {
+padding: 12px 12px 12px 0;
+display: inline-block;
+font-size: large;
+font-weight: bold;
+}
+
+input[type=submit] {
+background-color: #04AA6D;
+color: white;
+padding: 12px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+float: right;
+}
+
+input[type=submit]:hover {
+background-color: #45a049;
+}
+
+.imAt {
+float: right;
+border: none;
+}
+
+.Bin {
+float: left;
+border: none;
+}
+
+.Middle {
+border: none;
+display: table;
+margin: 0 auto;
+}
+
+.container {
+border-radius: 5px;
+background-color: #f2f2f2;
+padding: 20px;
+}
+
+.infoSpan {
+border: 2px;
+border-style: solid;
+border-color: red;
+padding: 10px;
+border-radius: 5px;
+font-weight: bold;
+font-size: large;
+}
+
+.col-10 {
+float: left;
+width: 15%;
+margin-top: 6px;
+margin-left: 10px;
+white-space: nowrap;
+}
+
+.col-25 {
+float: left;
+width: 24%;
+margin-top: 6px;
+margin-left: 10px;
+white-space: nowrap;
+}
+
+.col-75 {
+float: left;
+width: 74%;
+margin-top: 6px;
+margin-left: 10px;
+white-space: nowrap;
+}
+
+.col-100 {
+float: left;
+width: 99%;
+margin-top: 6px;
+margin-left: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Colors */
+.wms-amber,.wms-hover-amber:hover{color:#000!important;background-color:#ffc107!important}
+.wms-aqua,.wms-hover-aqua:hover{color:#000!important;background-color:#00ffff!important}
+.wms-blue,.wms-hover-blue:hover{color:#fff!important;background-color:#66a3ff!important}
+.wms-light-blue,.wms-hover-light-blue:hover{color:#000!important;background-color:#87CEEB!important}
+.wms-brown,.wms-hover-brown:hover{color:#fff!important;background-color:#795548!important}
+.wms-cyan,.wms-hover-cyan:hover{color:#000!important;background-color:#00bcd4!important}
+.wms-blue-grey,.wms-hover-blue-grey:hover,.wms-blue-gray,.wms-hover-blue-gray:hover{color:#fff!important;background-color:#607d8b!important}
+.wms-green,.wms-hover-green:hover{color:#fff!important;background-color:#47d147!important}
+.wms-light-green,.wms-hover-light-green:hover{color:#000!important;background-color:#8bc34a!important}
+.wms-indigo,.wms-hover-indigo:hover{color:#fff!important;background-color:#3f51b5!important}
+.wms-khaki,.wms-hover-khaki:hover{color:#000!important;background-color:#f0e68c!important}
+.wms-lime,.wms-hover-lime:hover{color:#000!important;background-color:#cddc39!important}
+.wms-orange,.wms-hover-orange:hover{color:#000!important;background-color:#ff9800!important}
+.wms-deep-orange,.wms-hover-deep-orange:hover{color:#fff!important;background-color:#ff5722!important}
+.wms-pink,.wms-hover-pink:hover{color:#fff!important;background-color:#e91e63!important}
+.wms-purple,.wms-hover-purple:hover{color:#fff!important;background-color:#9c27b0!important}
+.wms-deep-purple,.wms-hover-deep-purple:hover{color:#fff!important;background-color:#673ab7!important}
+.wms-red,.wms-hover-red:hover{color:#fff!important;background-color:#ffaaaa!important}
+.wms-read,.wms-hover-read:hover{color:#fff!important;background-color:#ffaaaa!important}
+.wms-orange,.wms-hover-orange:hover{color:#000!important;background-color:#ff9800!important}
+.wms-sand,.wms-hover-sand:hover{color:#000!important;background-color:#fdf5e6!important}
+.wms-teal,.wms-hover-teal:hover{color:#fff!important;background-color:#009688!important}
+.wms-yellow,.wms-hover-yellow:hover{color:#000!important;background-color:#ffffb3!important}
+.wms-white,.wms-hover-white:hover{color:#000!important;background-color:#fff!important}
+.wms-black,.wms-hover-black:hover{color:#fff!important;background-color:#000!important}
+.wms-bluejay,.wms-hover-black:hover{color:#fff!important;background-image:url("/Bluejay/hdr_bd.jpg")!important}
+.wms-grey,.wms-hover-grey:hover,.wms-gray,.wms-hover-gray:hover{color:#000!important;background-color:#bbb!important}
+.wms-light-grey,.wms-hover-light-grey:hover,.wms-light-gray,.wms-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}
+.wms-dark-grey,.wms-hover-dark-grey:hover,.wms-dark-gray,.wms-hover-dark-gray:hover{color:#fff!important;background-color:#616161!important}
+.wms-pale-red,.wms-hover-pale-red:hover{color:#000!important;background-color:#ffdddd!important}
+.wms-pale-green,.wms-hover-pale-green:hover{color:#000!important;background-color:#ddffdd!important}
+.wms-pale-yellow,.wms-hover-pale-yellow:hover{color:#000!important;background-color:#ffffcc!important}
+.wms-pale-blue,.wms-hover-pale-blue:hover{color:#000!important;background-color:#ddffff!important}
+.wms-text-red,.wms-hover-text-red:hover{color:#f44336!important}
+.wms-text-green,.wms-hover-text-green:hover{color:#4CAF50!important}
+.wms-text-blue,.wms-hover-text-blue:hover{color:#2196F3!important}
+.wms-text-yellow,.wms-hover-text-yellow:hover{color:#ffeb3b!important}
+.wms-text-white,.wms-hover-text-white:hover{color:#fff!important}
+.wms-text-black,.wms-hover-text-black:hover{color:#000!important}
+.wms-text-grey,.wms-hover-text-grey:hover,.wms-text-gray,.wms-hover-text-gray:hover{color:#757575!important}
+.wms-text-amber{color:#ffc107!important}
+.wms-text-aqua{color:#00ffff!important}
+.wms-text-light-blue{color:#87CEEB!important}
+.wms-text-brown{color:#795548!important}
+.wms-text-cyan{color:#00bcd4!important}
+.wms-text-blue-grey,.wms-text-blue-gray{color:#607d8b!important}
+.wms-text-light-green{color:#8bc34a!important}
+.wms-text-indigo{color:#3f51b5!important}
+.wms-text-khaki{color:#b4aa50!important}
+.wms-text-lime{color:#cddc39!important}
+.wms-text-orange{color:#ff9800!important}
+.wms-text-deep-orange{color:#ff5722!important}
+.wms-text-pink{color:#e91e63!important}
+.wms-text-purple{color:#9c27b0!important}
+.wms-text-deep-purple{color:#673ab7!important}
+.wms-text-sand{color:#fdf5e6!important}
+.wms-text-teal{color:#009688!important}
+.wms-text-light-grey,.wms-hover-text-light-grey:hover,.wms-text-light-gray,.wms-hover-text-light-gray:hover{color:#f1f1f1!important}
+.wms-text-dark-grey,.wms-hover-text-dark-grey:hover,.wms-text-dark-gray,.wms-hover-text-dark-gray:hover{color:#3a3a3a!important}
+.wms-border-red,.wms-hover-border-red:hover{border-color:#f44336!important}
+.wms-border-green,.wms-hover-border-green:hover{border-color:#4CAF50!important}
+.wms-border-blue,.wms-hover-border-blue:hover{border-color:#2196F3!important}
+.wms-border-yellow,.wms-hover-border-yellow:hover{border-color:#ffeb3b!important}
+.wms-border-white,.wms-hover-border-white:hover{border-color:#fff!important}
+.wms-border-black,.wms-hover-border-black:hover{border-color:#000!important}
+.wms-border-grey,.wms-hover-border-grey:hover,.wms-border-gray,.wms-hover-border-gray:hover{border-color:#bbb!important}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+.col-10, .col-25, .col-75, input[type=submit] {
+width: 100%;
+margin-top: 0;
+}
+}
+@media screen and (min-width: 601px) {
+.col-100, input[type=submit] {
+width: 100%;
+margin-top: 0;
+}
+}
+@media screen and (max-width: 386px) {
+.col-75 {
+color: black;
+}
+
+}

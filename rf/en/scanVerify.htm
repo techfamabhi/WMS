@@ -1,0 +1,97 @@
+<!-- IF 1 == 2 -->
+<! --
+$data=array("formName"=>"form1",
+              "formAction"=>$thisprogram,
+              "hiddens"=>"";
+              "color"=>"w3-{$color}",
+              "onChange"=>"do_submit();",
+              "fieldType"=>"text",
+              "fieldValue"=>"",
+              "fieldPrompt"=>$fieldPrompt,
+              "fieldPlaceHolder"=>$fieldPlaceHolder,
+              "fieldName"=>"scaninput",
+              "fieldId"=>$fieldId,
+              "fieldTitle"=>$fieldTitle,
+              "msg"=>$msg,
+              "msg2"=>""
+
+-->
+<!-- END -->
+
+<div class="container w3-{color} w3-half" style="margin-left:14px;">
+<h4 id="sw"><strong>{title}</strong></h4>
+<!-- IF {msg} <> "" -->
+<div  style="margin-left:0px;" class="w3-container wms-red"><span style="font-weight: bold; font-size: large; text-align: center;">{msg}</span></div>
+<!-- END -->
+ <form name="form1" action="pack.php" method="get">
+  {hiddens}
+  <input type="hidden" name="nh" value="0">
+  <input type="hidden" name="totes" value="{totes}">
+  <input type="hidden" name="ppl" value="{ppl}">
+  <input type="hidden" name="ppart" value="{ppart}">
+  <input type="hidden" name="pqty" value="{pqty}">
+  <input type="hidden" name="tqty" value="{tqty}">
+  <div class="row">
+   <div class="col-75">
+    <table class="table table-bordered table-striped">
+<!-- IF {ppart} <> "" -->
+     <tr>
+      <td colspan="5" class="FormSubHeaderFont">Previous Part</th>
+     </tr>
+     <tr>
+      <td class="FieldCaptionTD" align="left" width="5%">P/L</td>
+      <td class="FieldCaptionTD" align="left" width="30%">Part Number</td>
+      <td class="FieldCaptionTD" align="left" width="30%">Description</td>
+      <td class="FieldCaptionTD" align="center" width="5%">Qty</td>
+      <td class="FieldCaptionTD" align="center" width="10%">Tot Qty</td>
+     </tr>
+     <tr>
+      <td align="left" width="5%">{ppl}</td>
+      <td align="left" width="30%">{ppart}</td>
+      <td align="left" width="30%">{pdesc}</td>
+      <td align="center" width="5%">{pqty}</td>
+      <td align="center" width="10%">{tqty}</td>
+     </tr>
+<!-- END -->
+
+     <tr>
+      <td colspan="5" class="w3-white">&nbsp;</td>
+     </tr>
+     <tr>
+      <td class="FieldCaptionTD" align="left" width="10%">{fieldPrompt}</td>
+      <td class="w3-white" colspan="4" align="left" width="10%">
+      <input name="{fieldName}" style="text-transform:uppercase" type="{fieldType}" class="w3-white" onchange="{onChange}" value="{fieldValue}" placeholder="{fieldPlaceHolder}"{fieldId}{fieldTitle}>
+
+      </td>
+     </tr>
+     <tr>
+      <td colspan="5" class="w3-white">&nbsp;</td>
+     </tr>
+     <tr>
+      <td colspan="5">
+         <button class="binbutton-small" id="B1" name="B1" onclick="do_submit();">Submit</button>
+         <button class="binbutton-small" id="B1" value="done" name="B1" onclick="do_done();">Done</button>
+      </td>
+     </tr>
+      </table>
+   </div>
+  </div>
+    <br>
+    <br>
+ </form>
+</div>
+     </form>
+
+<script>
+    document.form1.scaninput.focus();
+function do_done()
+{
+ document.form1.func.value="scanVerDone";
+ document.form1.submit();
+}
+function do_cancel()
+{
+ document.form1.func.value="cancel";
+ document.form1.submit();
+}
+</script>

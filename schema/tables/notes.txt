@@ -1,0 +1,8 @@
+Added new field to VENDORS "allow_inplace"
+
+if set to "Y", this allows PO's for this Vendor to be 
+scanned received on the pallet that was packed by
+the Vendor.  Useful for heavy or bulk items like drive axles, etc.
+
+
+

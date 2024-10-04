@@ -1,0 +1,156 @@
+Item Import to WMS
+
+Vendors
+Req	Field   	DataType	Description
+*	Record Code			Always VEN
+*       vendor 		char(10) 
+*       name 		char(30) 
+        addr1 		char(30) 
+        addr2 		char(30) 
+        city 		char(20) 
+        state 		char(2) 
+        zip 		char(10) 
+        ctry 		char(3) 
+        contact 	char(30) 
+        phone 		char(15) 
+        email 		varchar(128)
+	alt_type        smallint,
+        allow_bo 	bool		0=No, cancel short shipped, [1=Yes]
+ 	action		tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Product Lines
+Req	Field   	DataType	Description
+*	Record Code			Always PLM
+*	pl_code 	char(6)
+* 	store 		smallint 
+ 	desc 		char(30) 
+ 	vend_code 	char(10)
+ 	perfered_zone 	char(3) 
+ 	perfered_aisle 	tinyint		1 thru 127
+ 	action		tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+
+Req	Field   	DataType	Description
+*	Record Code			Always PRT
+*	p_l 		char(3) 
+*	part_number 	char(22)
+*	part_desc	 char(30)
+ 	part_long_desc	char(60)
+*	unit_of_measure	char(3)
+ 	part_seq_num	 int
+ 	part_subline	 char(3)
+ 	part_category	char(4)
+ 	part_group 	char(5)
+ 	part_class 	char(3)
+ 	date_added 	datetime
+ 	serial_num_flag smallint
+ 	part_status 	char(1)
+ 	special_instr 	char(30)
+ 	hazard_id 	smallint
+ 	returnable 	char(1)	-- Y/N
+ 	kit_flag 	smallint
+ 	cost 		numeric(10,3)
+ 	core 		numeric(10,3)
+ 	core_group 	char(3)
+ 	action		tinyint		0=Create, 1=Delete, [2=Update/Create]
+					if action is not set, then #2 applies
+
+Units of measure
+Req	Field   	DataType	Description
+*	Record Code			Always UM
+*	p_l 		char(3) 
+*	store		smallint
+*	uom 		char(3)
+ 	uom_desc 	char(30)
+*	uom_qty 	int 		Qty in Each (or part uom)
+ 	length 		smallint
+ 	width 		smallint
+ 	height 		smallint
+ 	weight 		numeric(10,2)
+ 	volume 		numeric(10,2)	L x W x H
+ 	action		tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Parts (Products)
+Req	Field   	DataType	Description
+*	Record Code			Always PRT
+*	p_l 		char(3)
+*	part_number	char(22)
+	part_desc 	char(30)
+	part_long_desc 	char(60)
+*	unit_of_measure	char(3)
+	part_seq_num	int		Reports will Sequence PL,Seq#,Part#
+	part_subline 	char(3)
+	part_category 	char(4)
+	part_group 	char(5)
+	part_class 	char(3)
+	date_added 	datetime	if set to blank,defaults to current
+	serial_num_flag	smallint	1=yes
+	part_status 	char(1)	"D"=Set for Deletion
+	special_instr 	char(30)
+	hazard_id 	smallint	Pre-loaded HAZ records
+	kit_flag 	smallint 	Future
+	cost 		numeric(10,3)
+	core 		numeric(10,3)
+	core_group 	char(3)
+	shadow_number 	int 	Optional, if not needed set to 0
+
+
+
+Purchase Orders
+ wms_po_num is generated
+ po_statis is set to 0
+ num_messages is generated
+ created_by is set to 0, user id if entered manually in WMS
+Req	Field   	DataType	Description
+*	Record Code			Always POH
+*	warehouse 	smallint
+*	host_po_num 	char(20) 	PO if type is "P" or ASN
+					RMA# if type "R" for Credit
+					Transfer# if type is "T"
+*	po_type 	char(1) 	P=po, T=transfer, R=cust return
+*	vendor 		char(10)
+	po_date 	datetime
+*	num_lines 	int
+	bo_flag 	tinyint		0=cancel b/o, 1=bo allowed [default=1]
+	est_deliv_date 	datetime 	Default=tomorrow
+	ship_via 	char(6)
+	sched_date 	datetime	default=delivery date
+	xdock 		tinyint		1=cross dock
+ 	disp_comment 	tinyint		Display comment when receiving
+ 	comment 	varchar(128)	
+	customer_id 	char(12)	if spec order or xdock
+ 	ordernum	int		if special order, xdock or RMA
+ 	container	varchar(15) 	optional if ASN provides the container id
+	carton_id	varchar(15)	optional if provided by ASN
+
+
+POITEMS
+  poi_po_num is looked up (this is the WMS po#)
+  shadow is looked up
+  qty_recvd is set to 0
+  qty_bo is set to 0
+  qty_cancel is set to 0
+  weight is looked up
+  volume is looked up
+  poi_status tinyint, -- 0=open, 1=recvd part, 9=complete
+Req	Field   	DataType	Description
+*	Record Code			Always POD
+*	poi_po_num 	int
+*	poi_line_num 	int
+*	p_l 		char(3)
+*	part_number 	char(22)
+	part_desc 	char(30)
+*	uom 		char(3)
+*	qty_ord 	int
+	mdse_price 	numeric(10,3)
+	core_price 	numeric(10,3)
+	line_type 	char(1) 	" " normal, C=core, D="Defect" 
+	case_uom	char(3) 	if part was ordered in cases
+	case_qty 	int 		if part was ordered in cases
+	vendor_ship_qty int	 	if ASN
+	packing_slip 	char(22) 	if ASN
+	tracking_num 	char(22) 	if ASN
+	bill_lading  	char(22) 	if ASN
+	container_id 	char(15) 	if ASN
+	carton_id 	char(10) 	if ASN and vendor provides
+

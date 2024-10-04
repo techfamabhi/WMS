@@ -1,0 +1,43 @@
+<!-- IF 1 == 2 -->
+<!-- Generic1.htm dse Updated to new CSS 3/22/22 -->
+<!-- fieldValue not appearing in page when loaded, need to find out what the problem is-->
+<!-- scan or enter part
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "onChange"=>"do_bin();",
+                          "fieldType"=>"text",
+                          "fieldValue"=>"",
+                          "fieldPrompt"=>"Part Number",
+                          "fieldPlaceHolder"=>"Scan or enter Part",
+                          "fieldName"=>"scaninput",
+                          "fieldId"=>" id=\"partnum\"",
+                          "fieldTitle"=>" title=\"Scan or Enter Part Number\"",
+                          "msg"=>""
+  ); -- !>
+<!-- END -->
+<div class="container {color} w3-half" style="margin-left:14px;">
+ <form name="{formName}" action="{formAction}" method="get">
+{hiddens}
+  <div class="row">
+   <div class="col-75">
+       <span style="font-weight: bold; font-size: large; text-align: center;">{msg}</span>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-10">
+    <label class="wmslabel">{fieldPrompt}</label>
+   </div>
+   <div class="col-75">
+    <input name="{fieldName}" type="{fieldType}" class="w3-white" onchange="{onChange}" value="{fieldValue}" placeholder="{fieldPlaceHolder}" {fieldId}{fieldTitle}>
+    <br>
+    <br>
+   </div>
+  </div>
+ </form>
+</div>
+
+<script>
+    document.{ formName }.{ fieldName }.focus();
+</script>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Review Receipt</title>
+ <meta name="robots" content="noindex">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes" />
+ <script>
+  window.name="rcpt_review";
+ </script>
+
+  <link rel="stylesheet" href="../assets/css/wdi3.css">
+ <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+ <link rel="stylesheet" href="../Themes/Multipads/Style.css">
+ <link href="/jq/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="../assets/css/wms.css">
+ <style>
+ .menuI {
+  position: absolute;
+  right:0;
+ }
+ </style>
+ 
+ <script src="/jq/shortcut.js" type="text/javascript"></script>
+<script src="/jq/vue_2.6.14_min.js"></script>
+<script src="/jq/axios.min.js"></script>
+<script>
+shortcut.add("F1",function() {
+        do_reset();
+});
+function setSort(fld)
+{
+ var ele=document.getElementById('sorter');
+ var sdir=document.getElementById('sortDir');
+ var sortArrow=document.getElementById('si_' + fld);
+ ele.value=fld;
+ sortArrow.innerHTML="";
+ if (sdir.value === 'asc')
+  {
+   sortArrow.innerHTML='<img src="../images/sort_desc.png" width="16" height="16" border="0" title="Sort Descending"/>';
+   document.getElementById('sortDir').value="desc";
+  }
+ else 
+  {
+   ele.value=fld;
+   sortArrow.innerHTML='<img src="../images/sort_asc.png" width="16" height="16" border="0" title="Sort Ascending"/>';
+   document.getElementById('sortDir').value="asc";
+  }
+
+
+ document.form1.submit();
+}
+function showHide(inflag)
+{
+ if (inflag) document.getElementById('editRcpt').style.display="block";
+ else document.getElementById('editRcpt').style.display="none";
+}
+function editItem(batch,line)
+{
+ showHide(true);
+ application.fetchData(batch,line);
+ //alert(batch + ' ' + line);
+}
+function updData()
+{
+ showHide(false);
+ application.submitData();
+ //alert(batch + ' ' + line);
+}
+</script>
+
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.binbutton {
+    background-color: #2196F3;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.binbutton:disabled {
+    background-color: #dddddd;
+}
+.binbutton:enabled {
+    background-color: #2196F3;
+}
+label {
+ font-size: 1.2em;
+}
+strong {
+ font-size: 1.2em;
+}
+
+</style>
+
+</head>
+
+ <body class="wms-light-grey" >
+<!-- !PAGE CONTENT! -->
+<div class="topnav wms-light-blue" id="rfTopnav">
+<a href="#"><strong>Review Receipt</strong></a>
+<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+ <a href="/nwms/webmenu.php">Exit</a>
+ <a href="javascript:void(0);" class="icon" onclick="menuClick()">
+<img border="0" src="/nwms/images/menu_grey.png">
+ </a>
+</div>
+
+     <span id="sw"></span>
+     <span id="sw"></span>
+
+<script>
+function menuClick() {
+  var x = document.getElementById("rfTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+
+  <div class="panel panel-default">
+ <div class="panel-heading">
+  <div class="messg"></div>
+ </div>
+ <br />
+ <div class="row">
+  <div class="col-md-4">
+       <h3 class="panel-title">
+<button name="goBack" onclick="javascript:history.back();" class="btn btn-info btn-xs">Back</button>
+Received so Far</h3>
+  </div>
+ </div>
+ </div>
+  <div id="updMessg" class="messg"></div>
+   <div class="half">
+    <div class="w3-container w3-padding-8">
+      <form name="form1" action="/nwms/rf/rcpt_review.php" method="GET">
+      <input type="hidden" name="sorter" id="sorter" value="">
+      <input type="hidden" name="sortDir" id="sortDir" value="">
+      <table class="table table-bordered table-striped overflow-auto">
+       <thead>
+        <tr>
+         <th onclick="setSort('host_po_num');" nowrap class="FieldCaptionTD">PO#<span id="si_host_po_num">&nbsp;</span></th>
+         <th onclick="setSort('p_l');" nowrap class="FieldCaptionTD">P/L<span id="si_p_l">&nbsp;</span></th>
+         <th onclick="setSort('part_number');" nowrap class="FieldCaptionTD">Part Number<span id="si_part_number">&nbsp;</span></th>
+         <th onclick="setSort('part_desc');" class="FieldCaptionTD">Description<span id="si_part_desc">&nbsp;</span></th>
+         <th onclick="setSort('partUOM');" nowrap class="FieldCaptionTD">UOM<span id="si_partUOM">&nbsp;</span></th>
+         <th onclick="setSort('pack_id');" nowrap class="FieldCaptionTD">Tote/Bin<span id="si_pack_id">&nbsp;</span></th>
+         <th onclick="setSort('totalQty');" nowrap class="FieldCaptionTD">TotalRecvd<span id="si_totalQty">&nbsp;</span></th>
+         <th onclick="setSort('totalOrd');" nowrap class="FieldCaptionTD">TotalOrd<span id="si_totalOrd">&nbsp;</span></th>
+        </tr>
+       </thead>
+        <tr onclick="editItem(,);">
+         <td align="right"></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td nowrap></td>
+         <td align="right"></td>
+         <td align="right"></td>
+        </tr>
+        <tr onclick="editItem(121,1);">
+         <td align="right">99591</td>
+         <td>WIX</td>
+         <td>33682</td>
+         <td>Fuel Filter</td>
+         <td>EA</td>
+         <td nowrap>138</td>
+         <td align="right">3</td>
+         <td align="right">3</td>
+        </tr>
+        <tr onclick="editItem(121,2);">
+         <td align="right">99591</td>
+         <td>WIX</td>
+         <td>33732</td>
+         <td>Fuel/Water Separator</td>
+         <td>EA</td>
+         <td nowrap>138</td>
+         <td align="right">1</td>
+         <td align="right">1</td>
+        </tr>
+        <tr onclick="editItem(121,3);">
+         <td align="right">99591</td>
+         <td>WIX</td>
+         <td>33747</td>
+         <td>Fuel/Water Separator</td>
+         <td>EA</td>
+         <td nowrap>138</td>
+         <td align="right">1</td>
+         <td align="right">1</td>
+        </tr>
+        <tr onclick="editItem(121,4);">
+         <td align="right">99591</td>
+         <td>WIX</td>
+         <td>33750</td>
+         <td>Fuel Filter</td>
+         <td>EA</td>
+         <td nowrap>138</td>
+         <td align="right">1</td>
+         <td align="right">1</td>
+        </tr>
+        <tr onclick="editItem(121,5);">
+         <td align="right">99705</td>
+         <td>WIX</td>
+         <td>24029</td>
+         <td>Fuel Filter</td>
+         <td>EA</td>
+         <td nowrap>139</td>
+         <td align="right">5</td>
+         <td align="right">7</td>
+        </tr>
+        <tr onclick="editItem(121,6);">
+         <td align="right">99705</td>
+         <td>WIX</td>
+         <td>24046</td>
+         <td>Cabin Air Filter</td>
+         <td>EA</td>
+         <td nowrap>139</td>
+         <td align="right">1</td>
+         <td align="right">1</td>
+        </tr>
+       </table>
+      </form>
+    </div>
+   </div>
+   <div id="editRcpt">
+     <div class="modal-mask">
+      <div class="modal-wrapper">
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" onclick="showHide(false)"><span aria-hidden="true">&times;</span></button>
+          <span class="modal-title FormSubHeaderFont" id="dtitle"></span>
+         </div>
+         <div class="modal-body">
+<! -- PO Select Select -->
+          <div class="form-group">
+           <input type="hidden" name="POId" id="POId" value="" />
+           <label title="PO Number">PO Number</label>
+           <select class="form-control" name="newPO" id="thePO">
+          </select>
+          </div>
+<! -- in PO Select -->
+          <div class="form-group">
+           <label title="">Qty Recieved</label>
+           <input type="number" id="newQty" name="newQty" class="form-control"/>
+          </div>
+          <div class="form-group">
+           <label title="The Bin/Cart or Pallet ID">Tote</label>
+           <input type="text" class="form-control" id="newBin" name="newBin" />
+          </div>
+          <div class="form-group">
+           <br>
+          </div>
+          <div align="center">
+           <input type="button" class="btn btn-success btn-xs" id="actionButton" value="Update" onclick="updData();" />
+          </div>
+         </div>                 <!= modal-body ->
+        </div>                  <!- modal-content ->
+       </div>                   <!- modal-dialog ->
+      </div>                    <!- modal-wrapper ->
+     </div>                     <!- modal-mask ->
+   </div>                       <! - editRcpt ->
+
+<script>
+showHide(false);
+</script>
+
+<script>
+
+var application = new Vue({
+ el:'#editLine',
+ data:{
+  origQty:'',
+  newQty:'',
+  origBin:'',
+  newBin:'',
+  updMessg:'',
+  POs:["1013","1014"],
+  saveSuccess: false,
+  multiIndicator:'',
+  multiPO:'',
+  POId:'',
+  batch:'',
+  linenum:'',
+  p_l:'',
+  part_number:'',
+  partUOM:'',
+  ModelAU:false,
+  actionButton:'Update',
+  dynamicTitle:'Edit Reciept',
+ },
+ methods:{
+showMessage: function(messg){
+      // Set message
+      document.getElementById('updMessg').innerHTML=messg;
+  },
+
+  fetchData:function(batch,line){
+   application.batch=batch;
+   application.linenum=line;
+   axios.post('/nwms/servers/RcptLine.php', {
+    action:'fetchSingle',
+    POs: application.POs,
+    batch:batch,
+    line:line
+   }).then(function(response){
+ 	application.origQty = response.data.totalQty;
+ 	application.newQty = response.data.totalQty;
+ 	application.totalOrd = response.data.totalOrd;
+ 	application.origBin = response.data.pack_id;
+ 	application.newBin = response.data.pack_id;
+ 	application.p_l = response.data.p_l;
+ 	tmp = response.data.poCount;
+        if (tmp > 1) multiIndicator="*"; else multiIndicator='';
+        application.multiPO = response.data.multiPO;
+        application.POId = response.data.po_number;
+ 	application.part_number = response.data.part_number;
+ 	application.partUOM = response.data.partUOM;
+ 	application.batch = response.data.batch_num;
+ 	application.linenum = response.data.line_num;
+    //alert(JSON.stringify(response.data));
+    application.actionButton = 'Update';
+    application.dynamicTitle='Edit Reciept ';
+    document.getElementById('POId').value=application.POId;
+    document.getElementById('newQty').value=application.newQty;
+    document.getElementById('newBin').value=application.newBin;
+    document.getElementById('dtitle').innerHTML=application.dynamicTitle;
+
+    //build PO dropdown
+    var selPO=document.getElementById('thePO');
+    selPO.length=0;
+    const data = application.multiPO;
+    let option;
+    for(i=0; i< data.length; i++)
+    {
+     option = document.createElement('option');
+     option.text = data[i].host_po_num;
+     option.value = data[i].po_number;
+     selPO.add(option);
+     if (application.POId == data[i].po_number) selPO.selectedIndex=i;
+    }
+    // end PO dropdown
+    application.ModelAU=true;
+    showHide(true);
+   });
+  },
+  submitData:function(){
+    application.newQty=document.getElementById('newQty').value
+    application.newBin=document.getElementById('newBin').value
+      if(application.newQty != ''
+          && application.newBin != ''
+      )
+   {
+//alert(application.batch + " " + application.linenum);
+    axios.post('/nwms/servers/RcptLine.php', {
+     action:'update',
+	batch: application.batch,
+        line: application.linenum,
+        newQty: application.newQty,
+        newBin: application.newBin,
+        origQty: application.origQty,
+        origBin: application.origBin
+     }).then(function(response){
+    //alert(JSON.stringify(response.data));
+      application.showMessage(response.data.message);
+      setTimeout(() => {  application.showMessage(""); }, 5000);
+      application.ModelAU=false;
+      showHide(false);
+     });
+   }
+  }
+ }
+});
+
+</script>
+  
+  
+</body>
+</html>

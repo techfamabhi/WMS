@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Order 123466</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes" />
+ <script>
+  window.name="pickOrder";
+ </script>
+ <script src="/jq/shortcut.js" type="text/javascript"></script>
+<script>
+shortcut.add("return",function() {
+  var entered=document.getElementById('whse_loc').value;
+  var Qty=document.getElementById('qtytopick').value;
+  var rc=checkBin(entered,Qty);
+  return(rc);
+});
+</script>
+
+
+  <link rel="stylesheet" href="assets/css/wdi3.css">
+ <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+ <link rel="stylesheet" href="Themes/Multipads/Style.css">
+
+ <link rel="stylesheet" href="assets/css/wms.css">
+ <style>
+ .menuI {
+  position: absolute;
+  right:0;
+ }
+ </style>
+ 
+ <script>
+ if ( window !== window.parent ) 
+ {
+  parent.document.getElementById('pageTitle').innerHTML="Order 123466";
+ }
+</script>
+
+<script>
+function do_reset(arg)
+{
+history.back();
+}
+
+</script>
+<style>
+input[type=text], input[type=number], select, textarea {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 4px;
+resize: vertical;
+color: black;
+}
+
+.myRed
+{
+color:#fff!important;
+background-color:#ff7777!important
+}
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.binbutton {
+    background-color: #2196F3;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.binbutton:disabled {
+    background-color: #dddddd;
+}
+.binbutton:enabled {
+    background-color: blue;
+}
+</style>
+</head>
+
+ <body class="w3-light-grey" >
+<!-- !PAGE CONTENT! -->
+
+ <form name="form1" onkeydown="return event.key != 'Enter';" action="nowhere.htm" method="post">
+  <input type="hidden" name="func" id="func" value="pickGoToBin">
+  <input type="hidden" name="nh" value="1">
+  <input type="hidden" name="hostordernum" id="hostordernum" value="123466">
+  <input type="hidden" name="bintoScan" id="bintoScan" value="B-15-04-C">
+  <input type="hidden" name="orderNumber" id="orderNumber" value="10034">
+  <input type="hidden" name="lineNumber" id="lineNumber" value="1">
+  <input type="hidden" name="pullnum" id="pullnum" value="1">
+  <input type="hidden" name="shadow" id="shadow" value="194919">
+  <input type="hidden" name="p_l" id="p_l" value="WIX">
+  <input type="hidden" name="part_number" id="part_number" value="51358">
+  <input type="hidden" name="part_desc" id="part_desc" value="Fuel Filter">
+  <input type="hidden" name="uom" id="uom" value="EA">
+  <input type="hidden" name="qtytopick" id="qtytopick" value="1">
+  <input type="hidden" name="qtypicked" id="qtypicked" value="0">
+  <input type="hidden" name="otherLoc[]" id="othLoc[]" value="B-15-04-C|23">
+
+  <label class="wmslabel">Scan Bin</label>
+  <input name="binLocation" style="text-transform:uppercase" type="text" onfocus="this.value=''" value="" id="whse_loc">
+
+ </form>
+<script>
+
+ document.form1.binLocation.focus();
+
+ function checkBin(entBin,qty)
+{
+ entBin=entBin.toUpperCase()
+ var Ok=true;
+ var correctBin = document.getElementById('bintoScan').value;
+ if (entBin != correctBin)
+ {
+ Ok=false;
+  var others = document.getElementsByName("otherLoc[]");
+  var len=others.length;
+  var binOk=false;
+  var qtyOk=false;
+  var w;
+  var i;
+  for (i=0; i<len; i++)
+  {
+   w = others[i].value.split("|");
+   if (entBin == w[0])
+    {
+     binOk=true;
+     if (qty <= parseInt(w[1])) { qtyOk=true; }
+    }
+  } // end for i
+ if (binOk && qtyOk) if (confirm("Would you like to use " + entBin + " instead of " + correctBin + "?")) Ok=true;
+
+ else if (binOk) alert("There is not enough Qty in bin: " + entBin + ", please go to Bin: " + correctBin);
+ if (!binOk && !qtyOk) 
+ {
+  Ok=false;
+  alert("Incorrect Bin has been entered, please go to Bin: " + correctBin);
+  return(false);
+ } 
+ }
+if (Ok === true)
+{
+  alert("running submit");
+  //document.form1.submit();
+}
+else 
+ {
+  document.form1.binLocation.value="";
+alert(document.form1.binLocation.value);
+  document.form1.binLocation.focus();
+  return(false);
+ }
+} // end checkBin
+</script>
+  
+ </body>
+</html>

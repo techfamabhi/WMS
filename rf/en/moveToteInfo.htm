@@ -1,0 +1,28 @@
+<!-- moveToteInfo.htm - Display Tote info for Move -- !>
+        <table class="rspTable table table-bordered table-striped">
+         <tr>
+          <td colspan="5" class="w3-white">&nbsp;</td>
+         </tr>
+<!-- IF {items|count} > 0 -->
+         <thead role="rowgroup">
+          <tr role="row">
+<!-- BEGIN {items} AS item -->
+           <td role"columnheader" class="FieldCaptionTD" align="center" width="10%">{item.prompt}</td>
+<!-- END {items} -->
+        </tr>
+       </thead>
+<!-- BEGIN {items} AS item -->
+         <tr>
+          <td  data-label="{item.prompt}" align="center">{item.value}</td>
+          </td>
+         </tr>
+<!-- END {items} -->
+<!-- END -->
+        </table>
+    <br>
+<!-- IF {msg2} <> "" -->
+    <div class="row">
+     <div class="col-75" style="word-wrap: normal;font-weight: bold; font-size: large; text-align: cput;">{msg2}
+     </div>
+    </div>
+<!-- END -->

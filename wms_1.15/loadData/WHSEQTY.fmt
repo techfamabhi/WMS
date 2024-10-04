@@ -1,0 +1,3 @@
+Table:WHSEQTY
+Datafile:WHSEQTY.dat
+Fields:ms_shadow;int,ms_company;smallint,primary_bin;string,qty_avail;int,qty_alloc;int,qty_putaway;int,qty_overstk;int,qty_on_order;int,qty_on_vendbo;int,qty_on_custbo;int,qty_defect;int,qty_core;int,max_shelf;int,minimum;int,maximum;int,cost;decimal,core;decimal

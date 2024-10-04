@@ -1,0 +1,49 @@
+Picking
+*) what orders are waiting in a zone (pickers to do list)
+*) what orders are waiting for all zones (done) PICK_srv fetchAll
+*) for this order, what are the other zones and their status (PICK_srv orderZones)
+*) who is picking this order
+*) how many lines have they picked and not picked for this order
+*) what orders are waiting for product (fetchAll with stat set to "-1|-1")
+
+Packing
+*) what orders are waiting for packing
+*) for this order, what packs have parts for this order
+*) for this pack, what order (s) are in it
+
+shipping
+*) what orders are waiting for shipping
+*) for this order, what packs have parts for this order
+*) for this pack, what order (s) are in it
+
+
+
+add new table PICKLIST (use ORDTRACK)
+zone,
+whse_status, 0=waiting, 1=in process, 2=in Packing, 3=In shipping, 9=done
+order#,
+#lines
+
+(may have to add ORDPACK table to store packing info)
+ORDPACK
+company,
+pack_id,
+pack_status, 0=free, 1=inuse, 2=?
+shadow,
+order_num,
+line_num,
+qty_in_pack
+uom
+
+
+Types of picking
+Direct Picking (DP) - enter order (EO), go to bin (GTB), pick part (PP), when done drop it (DD)
+zone picking (ZP)  Enter Zone (EZ), EO, GTB, PP, put in tote (PIT), DD
+wave picking (WP), EZ,(EO,EO,...),GTB,PP,PIT,DD
+pick then pack (PT) , EZ,(EO,EO,...),GTB,PP,DD,PIT
+
+pack stage, DP=none, ship
+	    ZP=Scan Tote, optional scan parts (OSP), ship
+            WP=Scan Tote, OSP, ship
+            PT=scan Tote, rescan parts to new tote by order, Ship
+

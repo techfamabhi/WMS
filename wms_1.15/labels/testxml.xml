@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE labels SYSTEM "label.dtd">
+<labels _FORMAT="E:SERIAL.ZPL" _QUANTITY="1"
+PRINTERNAME="label1" _JOBNAME="LBL101">
+ <label>
+ <variable name="organization">611</variable>
+ <variable name="item">Nuts</variable>
+ <variable name="lot">1234</variable>
+ <variable name="serial_number">12345</variable>
+ <variable name="revision">V2</variable>
+ <variable name="lot_status">1234</variable>
+ <variable name="serial_number_status">Active</ variable>
+</label>
+</labels>

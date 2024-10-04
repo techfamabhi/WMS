@@ -1,0 +1,104 @@
+<!-- IF 1 == 2 -->
+<!-- scan or enter part 
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "onChange"=>"do_bin();",
+                          "fieldType"=>"text",
+                          "fieldValue"=>"",
+                          "fieldPrompt"=>"Part Number",
+                          "fieldPlaceHolder"=>"Scan or enter Part",
+                          "fieldName"=>"scaninput",
+                          "fieldId"=>" id=\"partnum\"",
+                          "fieldTitle"=>" title=\"Scan or Enter Part Number\"",
+                          "msg"=>"",
+                          "msg2"=>"",
+                          "function"=>"" //optional javascript function
+  ); -- !>
+<!-- END -->
+ <form name="{formName}" action="{formAction}" method="get">
+{hiddens}
+  <input type="hidden" name="skipit" id="skipit" value="0">
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-half">
+      <div class="w3-container {color} w3-padding-8">
+      <div  style="margin-left:0px;" class="w3-container"><span style="font-weight: bold; font-size: large; text-align: center;">{msg}</span></div>
+        <span class="w3-{color}"><br></span>
+        <div class="w3-clear">
+    <div class="toteDiv">Tote {toteId}</div>
+                <label class="wmslabel">{fieldPrompt}</label>
+                <input name="{fieldName}" style="text-transform:uppercase" type="{fieldType}" class="w3-white" onfocus="this.value=''" value="{fieldValue}" placeholder="{fieldPlaceHolder}"{fieldId}{fieldTitle}>
+                <br>
+                <br>
+      </div>
+    </div>
+<!-- IF {msg2} <> "" -->
+<h5>{msg2}<h5>
+<!-- END -->
+  </div>
+ </form>
+ <script src="/jq/shortcut.js" type="text/javascript"></script>
+<script>
+<!-- IF {function} <> "" -->
+  {function}
+<!-- END -->
+ document.{formName}.{fieldName}.focus();
+
+shortcut.add("return",function() {
+  var rc=checkBin();
+  //if (rc === true) document.{formName}.submit();
+  return(rc);
+});
+
+ function skip()
+ {
+  document.form1.skipit.value=1;
+  document.form1.submit();
+ } // end skip
+ function checkBin()
+{
+//alert("at checkBin");
+ var entBin=document.getElementById('whse_loc').value.toUpperCase();
+ var qty=document.getElementById('qtytopick').value;
+ var Ok=true;
+ var correctBin = document.getElementById('bintoScan').value;
+ if (entBin != correctBin)
+ {
+ Ok=false;
+  var others = document.getElementsByName("otherLoc[]");
+  var len=others.length;
+  var binOk=false;
+  var qtyOk=false;
+  var w;
+  var i;
+  for (i=0; i<len; i++)
+  {
+   w = others[i].value.split("|");
+   if (entBin == w[0])
+    {
+     binOk=true;
+     if (qty <= parseInt(w[1])) { qtyOk=true; }
+    }
+  } // end for i
+ if (binOk && qtyOk) if (confirm("Would you like to use " + entBin + " instead of " + correctBin + "?")) Ok=true;
+
+ else if (binOk) alert("There is not enough Qty in bin: " + entBin + ", please go to Bin: " + correctBin);
+ if (!binOk && !qtyOk) 
+ {
+  Ok=false;
+  alert("Incorrect Bin has been entered, please go to Bin: " + correctBin);
+  return(false);
+ } 
+ }
+//alert("OK=" + Ok + " binOk=" + binOk + ' qtyOk=' + qtyOk);
+if (Ok === true) document.{formName}.submit();
+else 
+ {
+//alert("at else, OK=" + Ok + " binOk=" + binOk + ' qtyOk=' + qtyOk);
+  document.{formName}.{fieldName}.value="";
+  document.{formName}.{fieldName}.focus();
+  return(false);
+ }
+} // end checkBin
+</script>

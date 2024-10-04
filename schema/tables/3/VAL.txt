@@ -1,0 +1,93 @@
+Validation tables Import to WMS
+
+Req	Field   	DataType	Description
+*	Record Code			Always VEN
+*	vendor		char(10)
+	name		char(30)
+	addr1		char(30)
+	addr2		char(30)
+	city		char(20)
+	state		char(2)
+	zip		char(10)
+	ctry		char(3)
+	contact		char(30)
+	phone		char(15)
+	email		varchar(15)
+	alt_type	smallint	
+	allow_bo	char(1)		Y/N
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Product Lines
+Req	Field   	DataType	Description
+*	Record Code			Always PLM
+*	pl_code 	char(6) 
+*	pl_company 	smallint 
+	pl_desc 	char(30) 
+*	pl_vend_code 	char(10) 
+	pl_perfered_zone	 char(3)
+	pl_perfered_aisle	 tinyint 
+	pl_date_added	 datetime	If not avail set to current date
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Valid UOM's
+Req	Field   	DataType	Description
+*	Record Code			Always UOM
+*	UOMCode		char(3) 
+*	UOMDesc		char(30)
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Sublines (if used)
+Req	Field   	DataType	Description
+*	Record Code			Always SUB
+*	p_l		char(3) 
+*	SubLine		char(3) 
+*	Desc		char(30)	Description
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Categorys (if used)
+Req	Field   	DataType	Description
+*	Record Code			Always CAT
+*	catCode		char(3) 
+*	Desc		char(30)	Description
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Part Groups (if used)
+Req	Field   	DataType	Description
+*	Record Code			Always Grp
+*	groupCode		char(3) 
+*	Desc		char(30)	Description
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Part Class (if used)
+Req	Field   	DataType	Description
+*	Record Code			Always CLS
+*	classCode	char(3) 
+*	Desc		char(30)	Description
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+
+Ship Via 
+Req	Field   	DataType	Description
+*	Record Code			Always VIA
+*	shipViaCode	char(3) 
+*	Desc		char(30)	Description
+ 	SCAC		char(4)		SCAC Code (If Applicable)
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+
+WHSE Zones
+Req	Field   	DataType	Description
+*	Record Code			Always ZON
+*	store		smallint	Store or Warehouse
+*	zone		char(3) 
+*	Desc		char(30)	Description
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+
+Bin Types
+Req	Field   	DataType	Description
+*	Record Code			Always BTP
+*	store		smallint	Store or Warehouse
+*	typeCode	char(2) 
+*	Desc		char(30)	Description
+ 	operation	tinyint		0=Create, 1=Delete, [2=Update/Create]
+

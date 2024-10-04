@@ -1,0 +1,36 @@
+<!-- IF 1 == 2 -->
+<!-- scan or enter part 
+  values needed are array("formName"=>"form1",
+                          "formAction"=>"whatever.php",
+                          "hiddens"=>"htmlOfHiddenFields",
+                          "color"=>"blue",
+                          "onChange"=>"do_bin();",
+                          "fieldType"=>"text",
+                          "fieldValue"=>"",
+                          "fieldPrompt"=>"Part Number",
+                          "fieldPlaceHolder"=>"Scan or enter Part",
+                          "fieldName"=>"scaninput",
+                          "fieldId"=>" id=\"partnum\"",
+                          "fieldTitle"=>" title=\"Scan or Enter Part Number\""
+  ); -- !>
+<!-- END -->
+
+ <form name="{formName}" action="{formAction}" method="get">
+{hiddens}
+  <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-half">
+      <div class="w3-container {color}">
+        <span class="w3-{color}"><br></span>
+        <div class="w3-clear"></div>
+                <label class="wmslabel">{fieldPrompt} 
+                <input type="{fieldType}" class="w3-white" onchange="{onChange}" value="{fieldValue}" name="{fieldName}" placeholder="{fieldPlaceHolder}"{fieldId}{fieldTitle}>
+</label>
+                <br>
+                <br>
+      </div>
+    </div>
+  </div>
+ </form>
+<script>
+ document.{formName}.{fieldName}.focus();
+</script>

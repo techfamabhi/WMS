@@ -1,0 +1,102 @@
+  <div class="container" id="optionMaint">
+   <br />
+   <h3 class="FormHeaderFont" align="center">{title}</h3>
+<!-- NOCODE -->    <div class="col-md-6" v-if="saveSuccess">
+     <div class="messg">{{ updMessg }} </div>
+    </div>
+   <br />
+   <div class="panel panel-default">
+    <div class="panel-heading">
+     <div class="row">
+      <div class="col-md-6">
+<!-- /NOCODE --> 
+      <table>
+       <tr>
+       <td width="50%">
+      <h3 class="panel-title">{panelTitle}</h3>
+       </td>
+       <td width="10%">
+<button class="btn btn-primary btn-xs" name="srClr" id="srClr" onclick="editOptions()" title="Stock Check antoher Part Number">Edit Options</button>
+       </td>
+      </tr>
+     </table>
+<!-- NOCODE -->
+      </div>
+      <div class="col-md-6" align="right">
+       <button class="btnlink" @click="openModel" value="Add"><img border="0" src="images/add1.png" title="Add New Record"></button>
+      </div>
+     </div>
+    </div>
+    <div class="panel-body">
+     <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+       <tr>
+        <th class="FieldCaptionTD">Warehouse</th>
+        <th class="FieldCaptionTD">Option Id</th>
+        <th class="FieldCaptionTD">Description</th>
+        <th class="FieldCaptionTD">Setting</th>
+        <th class="FieldCaptionTD">Category</th>
+        <th class="FieldCaptionTD">Full Description</th>
+       </tr>
+       <tr v-for="row in allData">
+        <td align="right">{{ row.cop_company }}</td>
+        <td align="right">{{ row.cop_option }}</td>
+        <td>{{ row.copt_desc }}</td>
+        <td>{{ row.cop_flag }}</td>
+        <td>{{ row.copt_cat }}</td>
+        <td><button class="btnlink" name="edit" @click="fetchData(row.cop_company,row.cop_option)"><img src="images/edit2.png" border="0" title="Edit this Record"></button>
+        <button class="btnlink" name="delete" @click="deleteData(row.cop_company,row.cop_option)"><img src="images/trash2.png" border="0" title="Delete this Record"></button>
+       </td>
+       </tr>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div v-if="ModelAU">
+    <transition name="model">
+     <div class="modal-mask">
+      <div class="modal-wrapper">
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" @click="ModelAU=false"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title FormSubHeaderFont">{{ dynamicTitle }}</h4>
+         </div>
+         <div class="modal-body">
+<! -- Add dropdown for counterman, remove name, add percent and comments --!>
+          <div class="form-group">
+           <label title="Option Number">Warehouse</label>
+           <input type="text" title="Warehouse" class="form-control" v-model="cop_company" />
+          </div>
+          <div class="form-group">
+           <label title="Option Number">Option</label><span class="required">&nbsp;*</span>
+           <input type="text" title="Option Number" class="form-control" v-model="cop_option" />
+          </div>
+          <div class="form-group">
+           <label title="">Description</label><span class="required">&nbsp;*</span>
+           <input type="text" class="form-control" v-model="copt_desc" disabled/>
+          </div>
+          <div class="form-group">
+           <label title="Address">Option Setting</label>
+           <input type="text" title="Setting" class="form-control" v-model="cop_flag" />
+          <div>
+          <div class="form-group">
+          <br />
+          <div align="center">
+           <input type="button" class="btn btn-success btn-xs" v-model="actionButton" @click="submitData" />
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </transition>
+   </div> <!-- /NOCODE -->
+  </div>
+<script>
+function editOptions()
+ {
+  window.open("COPTDESC.php");
+ }
+</script>
+

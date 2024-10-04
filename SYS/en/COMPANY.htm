@@ -1,0 +1,150 @@
+  <div class="container" id="compMaint">
+   <br />
+   <h3 class="FormHeaderFont" align="center">{title}</h3>
+<!-- NOCODE -->    <div class="col-md-6" v-if="saveSuccess">
+     <div class="messg">{{ updMessg }} </div>
+    </div>
+   <br />
+   <div class="panel panel-default">
+    <div class="panel-heading">
+     <div class="row">
+      <div class="col-md-6">
+<!-- /NOCODE -->       <h3 class="panel-title">{panelTitle}</h3><!-- NOCODE -->
+      </div>
+      <div class="col-md-6" align="right">
+       <button class="btnlink" @click="openModel" value="Add"><img border="0" src="images/add1.png" title="Add New Record"></button>
+      </div>
+     </div>
+    </div>
+    <div class="panel-body">
+     <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+       <tr>
+        <th class="FieldCaptionTD">Warehouse ID</th>
+        <th class="FieldCaptionTD">Name</th>
+        <th class="FieldCaptionTD">Address</th>
+        <th class="FieldCaptionTD">City</th>
+        <th class="FieldCaptionTD">State</th>
+        <th class="FieldCaptionTD">Zip</th>
+        <th class="FieldCaptionTD">Host ID</th>
+        <th class="FieldCaptionTD">Phone</th>
+        <th class="FieldCaptionTD">Fax</th>
+        <th class="FieldCaptionTD">Abbr</th>
+        <th class="FieldCaptionTD">Region</th>
+       </tr>
+       <tr v-for="row in allData">
+        <td align="right">{{ row.company_number }}</td>
+        <td>{{ row.company_name }}</td>
+        <td>{{ row.company_address }}</td>
+        <td>{{ row.company_city }}</td>
+        <td>{{ row.company_state }}</td>
+        <td>{{ row.company_zip }}</td>
+        <td>{{ row.host_company }}</td>
+        <td>{{ row.company_phone }}</td>
+        <td>{{ row.company_fax_num }}</td>
+        <td>{{ row.company_abbr }}</td>
+        <td>{{ row.company_region }}</td>
+        <td><button class="btnlink" name="edit" @click="fetchData(row.company_number)"><img src="images/edit2.png" border="0" title="Edit this Record"></button>
+       </tr>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div v-if="ModelAU">
+    <transition name="model">
+     <div class="modal-mask">
+      <div class="modal-wrapper">
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" @click="ModelAU=false"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title FormSubHeaderFont">{{ dynamicTitle }}</h4>
+         </div>
+         <div class="modal-body">
+<! -- Add dropdown for counterman, remove name, add percent and comments --!>
+          <div class="form-group">
+           <table>
+            <tr>
+             <td>
+           <label title="Company/Store/Warehouse Number">WMS Warehouse ID</label><span class="required">&nbsp;*</span>
+           <input type="text" title="Company/Store/Warehouse Number" class="form-control" v-model="company_number" />
+            </td>
+            <td>
+             <label title="Host Warehouse Id">Host Warehouse/Store ID</label><span class="required">&nbsp;*</span>
+             <input type="text" class="form-control" v-model="host_company">
+            </td>
+            </tr>
+           </table>
+          </div>
+          <div class="form-group">
+           <label title="">Name</label><span class="required">&nbsp;*</span>
+           <input type="text" title="The Name of the Warehouse" class="form-control" v-model="company_name"/>
+          </div>
+          <div class="form-group">
+           <label title="Address">Address</label>
+           <input type="text" title="Address" class="form-control" v-model="company_address" />
+          <div>
+          <div class="form-group">
+           <label title="City">City</label>
+           <input type="text" title="City" class="form-control" v-model="company_city" />
+            </td>
+            </tr>
+           </table>
+          </div>
+          <div class="form-group">
+           <table>
+            <tr>
+             <td>
+           <label title="State">State</label>
+           <input type="text" size="2" title="State" class="form-control" v-model="company_state" />
+             </td>
+             <td>&nbsp;</td>
+             <td>
+           <label title="Zip Code">Zip</label>
+           <input type="text" size="10" title="Zip Code" class="form-control" v-model="company_zip" />
+             </td>
+            </tr>
+           </table>
+          </div>
+          <div class="form-group">
+           <table>
+            <tr>
+             <td>&nbsp;</td>
+             <td>
+           <label title="Phone Number">Phone</label><br>
+           <input type="tel" v-model="company_phone" @input="acceptNumber">
+            </td>
+             <td>&nbsp;</td>
+            <td>
+           <label title="Fax Phone Number">Fax</label><br>
+           <input type="tel" v-model="company_fax_num" @input="acceptFax">
+            </td>
+            </tr>
+           </table>
+          </div>
+
+          <div class="form-group">
+           <label title="Warehouse Abbreviation">Abbr</label>
+           <input type="text" title="Warehouse Abbreviation" class="form-control" v-model="company_abbr" />
+          </div>
+          <div class="form-group">
+           <label title="Warehouse Region">Region</label>
+           <input type="text" title="Warehouse Region" class="form-control" v-model="company_region" />
+          </div>
+          <div class="form-group">
+           <label title="Warehouse Logo">Logo</label>
+           <input type="text" title="Warehouse Logo" class="form-control" v-model="company_logo" />
+          </div>
+          <div class="form-group">
+          <br />
+          <div align="center">
+           <input type="button" class="btn btn-success btn-xs" v-model="actionButton" @click="submitData" />
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </transition>
+   </div> <!-- /NOCODE -->
+  </div>

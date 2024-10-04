@@ -1,0 +1,4 @@
+ Javascript packages that are used throughout the site that should eventually be moved to assets. Mainly used to try different versions, since some versions don't work on all tested devices so far.
+
+ Once all the versions are worked out, the correct versions will be moved to wms/assets/js
+ 

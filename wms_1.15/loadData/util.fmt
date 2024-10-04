@@ -1,0 +1,3 @@
+Table:WEB_MENU
+Datafile:util.dat
+Fields:menu_num;smallint,menu_line;smallint,menu_desc;string,menu_image;string,menu_url;string,menu_priv;smallint,menu_target;string
